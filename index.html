@@ -20,19 +20,13 @@
             <div class="position-relative">
                 <div class="card p-2 text-center">
 
-                    <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-                        <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" autofocus/>
-                        <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
-                        <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
-                        <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
-                        <input class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
-                        <input class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                    <div id="otp-mobile" class="inputs d-flex flex-row justify-content-center mt-2">
+                        <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" inputmode="numeric" id="first" onkeyup="inputOtpKeyUpMobile();" maxlength="1" autofocus="autofocus" />
+                        <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" inputmode="numeric" id="second" onkeyup="inputOtpKeyUpMobile();" maxlength="1" />
+                        <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" inputmode="numeric" id="third" onkeyup="inputOtpKeyUpMobile();" maxlength="1"  />
+                        <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" inputmode="numeric" id="fourth" onkeyup="inputOtpKeyUpMobile();" maxlength="1" />
+                        <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" inputmode="numeric" id="fifth" onkeyup="inputOtpKeyUpMobile();" maxlength="1"  />
+                        <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" inputmode="numeric" id="sixth" onkeyup="inputOtpKeyUpMobile();" maxlength="1"  />
                     </div>
                     <div>
                         <input type="submit" id="btnSubmit-mobile">
@@ -120,34 +114,6 @@
             $('#btnSubmit-mobile').css('opacity', '0.6');
         }
     }
-
-    // if ('OTPCredential' in window) {
-    //     window.addEventListener('DOMContentLoaded', e => {
-    //         let inputs = document.querySelectorAll('#otp > *[id]');
-    //         const ac = new AbortController();
-    //         navigator.credentials.get({
-    //             otp: { transport: ['sms'] },
-    //             signal: ac.signal
-    //         })
-    //             // .then(otp => {
-    //             //     input.value = otp.code;
-    //             //     if (form) form.submit();
-    //             // })
-    //             .then(function (otp) {
-    //                 let otpCode = otp.code;
-    //                 console.log('otp : ' + otpCode);
-    //                 let otpChar = otpCode.split("");
-    //                 console.log(otpChar);
-    //                 for (let i = 0; i < inputs.length; i++) {
-    //                     inputs[i] = otpChar[i];
-    //                     console.log('input[' + i + '] = ' + otpChar[i]);
-    //                 }
-    //             })
-    //             .catch(err => {
-    //                 console.log(err);
-    //             });
-    //     });
-    // }
 
 </script>
 
