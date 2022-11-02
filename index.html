@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
+        integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="otpForm">
+        <div class="container height-100 d-flex justify-content-center align-items-center">
+            <div class="position-relative">
+                <div class="card p-2 text-center">
+
+                    <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                        <input class="m-2 text-center form-control rounded" type="text" id="first"
+                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" autofocus/>
+                        <input class="m-2 text-center form-control rounded" type="text" id="second"
+                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                        <input class="m-2 text-center form-control rounded" type="text" id="third"
+                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                        <input class="m-2 text-center form-control rounded" type="text" id="fourth"
+                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                        <input class="m-2 text-center form-control rounded" type="text" id="fifth"
+                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                        <input class="m-2 text-center form-control rounded" type="text" id="sixth"
+                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                    </div>
+                    <div>
+                        <input type="submit" id="btnSubmit-mobile">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+    $(document).ready(function () {
+        let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+    })
+    document.addEventListener("DOMContentLoaded", function (event) {
+        function OTPInput() {
+            let editor = document.getElementById('first');
+            editor.onpaste = pasteOTP;
+
+            let inputs = document.querySelectorAll('#otp > *[id]');
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("keyup", function (event) {
+                    let keycode = $(this).val().charCodeAt(0);
+                    if (event.key === "Backspace" || keycode === 8) {
+                        inputs[i].value = "";
+                        if (i !== 0) {
+                            inputs[i - 1].focus();
+                        }
+                    } else {
+                        let keycode = $(this).val().charCodeAt(0);
+                        if (i === inputs.length - 1 && inputs[i].value !== "") {
+                            inputs[i].value = String.fromCharCode(keycode);
+                            console.log(inputs[i].value + 'a');
+                            return true;
+                        } else if (keycode > 47 && keycode < 58) {
+                            inputs[i].value = String.fromCharCode(keycode);
+                            console.log(inputs[i].value + 'b');
+                            if (i !== inputs.length - 1) {
+                                inputs[i + 1].focus();
+                            }
+                            event.preventDefault();
+                        }
+                    }
+                });
+            }
+        }
+        OTPInput();
+    });
+
+    function pasteOTP(event) {
+        event.preventDefault();
+        let elm = event.target;
+        let pasteVal = event.clipboardData.getData('text').split("");
+        if (pasteVal.length > 0) {
+            while (elm) {
+                elm.value = pasteVal.shift();
+                elm = elm.nextSibling.nextSibling;
+            }
+        }
+    }
+
+    function inputOtpKeyUpMobile() {
+        let inputOTP1 = $('#first').val();
+        let inputOTP2 = $('#second').val();
+        let inputOTP3 = $('#third').val();
+        let inputOTP4 = $('#fourth').val();
+        let inputOTP5 = $('#fifth').val();
+        let inputOTP6 = $('#sixth').val();
+
+        //convert int to string
+        let inputOTP1String = inputOTP1.toString();
+        let inputOTP2String = inputOTP2.toString();
+        let inputOTP3String = inputOTP3.toString();
+        let inputOTP4String = inputOTP4.toString();
+        let inputOTP5String = inputOTP5.toString();
+        let inputOTP6String = inputOTP6.toString();
+
+
+        if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
+            $('#btnSubmit-mobile').removeAttr('disabled');
+            $('#btnSubmit-mobile').css('opacity', '1');
+
+        } else {
+            $('#btnSubmit-mobile').attr('disabled', 'disabled');
+            $('#btnSubmit-mobile').css('opacity', '0.6');
+        }
+    }
+
+    // if ('OTPCredential' in window) {
+    //     window.addEventListener('DOMContentLoaded', e => {
+    //         let inputs = document.querySelectorAll('#otp > *[id]');
+    //         const ac = new AbortController();
+    //         navigator.credentials.get({
+    //             otp: { transport: ['sms'] },
+    //             signal: ac.signal
+    //         })
+    //             // .then(otp => {
+    //             //     input.value = otp.code;
+    //             //     if (form) form.submit();
+    //             // })
+    //             .then(function (otp) {
+    //                 let otpCode = otp.code;
+    //                 console.log('otp : ' + otpCode);
+    //                 let otpChar = otpCode.split("");
+    //                 console.log(otpChar);
+    //                 for (let i = 0; i < inputs.length; i++) {
+    //                     inputs[i] = otpChar[i];
+    //                     console.log('input[' + i + '] = ' + otpChar[i]);
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 console.log(err);
+    //             });
+    //     });
+    // }
+
+</script>
+
+
+
+</html>
