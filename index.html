@@ -21,17 +21,17 @@
                 <div class="card p-2 text-center">
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
                         <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="first" name="chars[1]"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                            autocomplete="one-time-code"/>
                         <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="second" name="chars[2]"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                            autocomplete="one-time-code" />
                         <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="third" name="chars[3]"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                            autocomplete="one-time-code" />
                         <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="fourth" name="chars[4]"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                            autocomplete="one-time-code" />
                         <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="fifth" name="chars[5]"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" />
+                            autocomplete="one-time-code" />
                         <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="sixth" name="chars[6]"
-                            autocomplete="one-time-code" onkeyup="inputOtpKeyUpMobile()" maxlength="1"/>
+                            autocomplete="one-time-code" maxlength="1"/>
                     </div>
                     <div>
                         <input type="submit" id="btnSubmit-mobile">
@@ -40,93 +40,10 @@
                 </div>
             </div>
         </div>
-<!--         <input type="text" class="def-txt-input" name="chars[1]" autocomplete="one-time-code">
-        <input type="text" class="def-txt-input" name="chars[2]" autocomplete="one-time-code">
-        <input type="text" class="def-txt-input" name="chars[3]" autocomplete="one-time-code">
-        <input type="text" class="def-txt-input" name="chars[4]" autocomplete="one-time-code">
-        <input type="text" class="def-txt-input" name="chars[5]" autocomplete="one-time-code">
-        <input type="text" class="def-txt-input" name="chars[6]" autocomplete="one-time-code" maxlenght="1"> -->
+
     </form>
 </body>
-<!-- <script>
-    $(document).ready(function () {
-        let inputs = document.querySelectorAll('#otp-mobile > *[id]');
-    })
-    document.addEventListener("DOMContentLoaded", function (event) {
-        function OTPInput() {
-            let editor = document.getElementById('first');
-            editor.onpaste = pasteOTP;
 
-            let inputs = document.querySelectorAll('#otp > *[id]');
-            for (let i = 0; i < inputs.length; i++) {
-                inputs[i].addEventListener("keyup", function (event) {
-                    let keycode = $(this).val().charCodeAt(0);
-                    if (event.key === "Backspace" || keycode === 8) {
-                        inputs[i].value = "";
-                        if (i !== 0) {
-                            inputs[i - 1].focus();
-                        }
-                    } else {
-                        let keycode = $(this).val().charCodeAt(0);
-                        if (i === inputs.length - 1 && inputs[i].value !== "") {
-                            inputs[i].value = String.fromCharCode(keycode);
-                            console.log(inputs[i].value + 'a');
-                            return true;
-                        } else if (keycode > 47 && keycode < 58) {
-                            inputs[i].value = String.fromCharCode(keycode);
-                            console.log(inputs[i].value + 'b');
-                            if (i !== inputs.length - 1) {
-                                inputs[i + 1].focus();
-                            }
-                            event.preventDefault();
-                        }
-                    }
-                });
-            }
-        }
-        OTPInput();
-    });
-
-    function pasteOTP(event) {
-        event.preventDefault();
-        let elm = event.target;
-        let pasteVal = event.clipboardData.getData('text').split("");
-        if (pasteVal.length > 0) {
-            while (elm) {
-                elm.value = pasteVal.shift();
-                elm = elm.nextSibling.nextSibling;
-            }
-        }
-    }
-
-    function inputOtpKeyUpMobile() {
-        let inputOTP1 = $('#first').val();
-        let inputOTP2 = $('#second').val();
-        let inputOTP3 = $('#third').val();
-        let inputOTP4 = $('#fourth').val();
-        let inputOTP5 = $('#fifth').val();
-        let inputOTP6 = $('#sixth').val();
-
-        //convert int to string
-        let inputOTP1String = inputOTP1.toString();
-        let inputOTP2String = inputOTP2.toString();
-        let inputOTP3String = inputOTP3.toString();
-        let inputOTP4String = inputOTP4.toString();
-        let inputOTP5String = inputOTP5.toString();
-        let inputOTP6String = inputOTP6.toString();
-
-
-        if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
-            $('#btnSubmit-mobile').removeAttr('disabled');
-            $('#btnSubmit-mobile').css('opacity', '1');
-
-        } else {
-            $('#btnSubmit-mobile').attr('disabled', 'disabled');
-            $('#btnSubmit-mobile').css('opacity', '0.6');
-        }
-    }
-
-</script> -->
 <script>
 function handleCharacter(event) {
     var $input = $(this),
