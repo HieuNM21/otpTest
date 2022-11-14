@@ -16,7 +16,7 @@
 
 <body>
     <form id="otpForm">
-        <div class="container height-100 d-flex justify-content-center align-items-center">
+<!--         <div class="container height-100 d-flex justify-content-center align-items-center">
             <div class="position-relative">
                 <div class="card p-2 text-center">
                     <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
@@ -39,10 +39,16 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
+        <input type="text" class="def-txt-input" name="chars[1]">
+<input type="text" class="def-txt-input" name="chars[2]">
+<input type="text" class="def-txt-input" name="chars[3]">
+<input type="text" class="def-txt-input" name="chars[4]">
+<input type="text" class="def-txt-input" name="chars[5]">
+<input type="text" class="def-txt-input" name="chars[6]">
     </form>
 </body>
-<script>
+<!-- <script>
     $(document).ready(function () {
         let inputs = document.querySelectorAll('#otp-mobile > *[id]');
     })
@@ -120,8 +126,48 @@
         }
     }
 
-</script>
+</script> -->
+<script>
+function handleCharacter(event) {
+    var $input = $(this),
+        index = getIndex($input),
+        digit = $input.val().slice(0,1),
+        rest = $input.val().slice(1),
+        $next;
 
+    if (rest.length > 0) {
+        $input.val(digit);  // trim input value to just one character
+        $next = $('.def-txt-input[name="chars['+ (index + 1) +']"]');
+
+        if ($next.length > 0) {
+            $next.val(rest);  // push the rest of the value into the next input
+            $next.focus();
+            handleCharacter.call($next, event);  // run the same code on the next input
+        }
+    }
+}
+
+function handleBackspace(event) {
+    var $input = $(this),
+        index = getIndex($input),
+        $prev;
+
+    // if the user pressed backspace and the input is empty
+    if (event.which === 8 && !$(this).val()) {
+        $prev = $('.def-txt-input[name="chars['+ (index - 1) +']"]');
+        $prev.focus();
+    }
+}
+
+function getIndex($input) {
+    return parseInt($input.attr('name').split(/[\[\]]/)[1], 10);
+}
+
+$('.def-txt-input')
+    .on('keyup', handleCharacter)
+    .on('keydown', handleBackspace);
+    
+</script>
 
 
 </html>
