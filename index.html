@@ -15,75 +15,77 @@
 </head>
 
 <body>
-    <form id="otpForm">
-        <div class="container height-100 d-flex justify-content-center align-items-center">
-            <div class="position-relative">
-                <div class="card p-2 text-center">
-                    <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2">
-                        <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="first" name="chars[1]"
-                            autocomplete="one-time-code" />
-                        <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="second" name="chars[2]"
-                            autocomplete="one-time-code" />
-                        <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="third" name="chars[3]"
-                            autocomplete="one-time-code" />
-                        <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="fourth" name="chars[4]"
-                            autocomplete="one-time-code" />
-                        <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="fifth" name="chars[5]"
-                            autocomplete="one-time-code" />
-                        <input class="m-2 text-center form-control rounded def-txt-input" type="number" id="sixth" name="chars[6]"
-                            autocomplete="one-time-code" maxlength="1" />
-                    </div>
-                    <div>
-                        <input type="button" id="btnSubmit-mobile" value="Xác thực">
-                    </div>
-
+    <div class="content">
+        <div>
+            <form class="form-totp-mobile" id="pin_form-mobile" name="pin_form">
+                <div id="otp-mobile" class="inputs d-flex flex-row justify-content-center mt-2">
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number" pattern="\d{1}" name="chars[1]"
+                        pattern="[0-9]*" inputmode="numeric" id="first"
+                        autofocus="autofocus" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number" pattern="\d{1}" name="chars[2]"
+                        pattern="[0-9]*" inputmode="numeric" id="second"
+                     />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number" pattern="\d{1}" name="chars[3]"
+                        pattern="[0-9]*" inputmode="numeric" id="third"
+                     />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number" pattern="\d{1}" name="chars[4]"
+                        pattern="[0-9]*" inputmode="numeric" id="fourth"
+                     />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number" pattern="\d{1}" name="chars[5]"
+                        pattern="[0-9]*" inputmode="numeric" id="fifth"
+                     />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number" pattern="\d{1}" name="chars[6]"
+                        pattern="[0-9]*" inputmode="numeric" id="sixth"
+                        maxlength="1" />
                 </div>
-            </div>
+                <div class="form-group-btn-mobile">
+                    <input type="button" value="Xác thực" class="btnSubmit-mobile" id="btnSubmit-mobile"/>
+                </div>
+            </form>
         </div>
-
-    </form>
+    </div>
 </body>
 
 <script>
-function handleCharacter(event) {
-    var $input = $(this),
-        index = getIndex($input),
-        digit = $input.val().slice(0,1),
-        rest = $input.val().slice(1),
-        $next;
+    function handleCharacter(event) {
+        var $input = $(this),
+            index = getIndex($input),
+            digit = $input.val().slice(0, 1),
+            rest = $input.val().slice(1),
+            $next;
 
-    if (rest.length > 0) {
-        $input.val(digit);  // trim input value to just one character
-        $next = $('.def-txt-input[name="chars['+ (index + 1) +']"]');
+        if (rest.length > 0) {
+            $input.val(digit);  // trim input value to just one character
+            $next = $('.def-txt-input[name="chars[' + (index + 1) + ']"]');
 
-        if ($next.length > 0) {
-            $next.val(rest);  // push the rest of the value into the next input
-            $next.focus();
-            handleCharacter.call($next, event);  // run the same code on the next input
+            if ($next.length > 0) {
+                $next.val(rest);  // push the rest of the value into the next input
+                $next.focus();
+                handleCharacter.call($next, event);  // run the same code on the next input
+            }
         }
     }
-}
 
-function handleBackspace(event) {
-    var $input = $(this),
-        index = getIndex($input),
-        $prev;
+    function handleBackspace(event) {
+        var $input = $(this),
+            index = getIndex($input),
+            $prev;
 
-    // if the user pressed backspace and the input is empty
-    if (event.which === 8 && !$(this).val()) {
-        $prev = $('.def-txt-input[name="chars['+ (index - 1) +']"]');
-        $prev.focus();
+        // if the user pressed backspace and the input is empty
+        if (event.which === 8 && !$(this).val()) {
+            $prev = $('.def-txt-input[name="chars[' + (index - 1) + ']"]');
+            $prev.focus();
+        }
     }
-}
 
-function getIndex($input) {
-    return parseInt($input.attr('name').split(/[\[\]]/)[1], 10);
-}
+    function getIndex($input) {
+        return parseInt($input.attr('name').split(/[\[\]]/)[1], 10);
+    }
 
-$('.def-txt-input')
-    .on('keyup', handleCharacter)
-    .on('keydown', handleBackspace);
-    
+    $('.def-txt-input')
+        .on('keyup', handleCharacter)
+        .on('keydown', handleBackspace);
+
 </script>
 
 
