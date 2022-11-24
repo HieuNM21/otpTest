@@ -81,6 +81,33 @@
         .on('keydown', handleBackspace);
 
 </script>
+<script>
+    function inputOtpKeyUpMobile() {
+        const inputOTP1 = $('#first').val();
+        const inputOTP2 = $('#second').val();
+        const inputOTP3 = $('#third').val();
+        const inputOTP4 = $('#fourth').val();
+        const inputOTP5 = $('#fifth').val();
+        const inputOTP6 = $('#sixth').val();
 
+        //convert int to string
+        const inputOTP1String = inputOTP1.toString();
+        const inputOTP2String = inputOTP2.toString();
+        const inputOTP3String = inputOTP3.toString();
+        const inputOTP4String = inputOTP4.toString();
+        const inputOTP5String = inputOTP5.toString();
+        const inputOTP6String = inputOTP6.toString();
+
+
+        if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
+            $('#btnSubmit-mobile').removeAttr('disabled');
+            $('#btnSubmit-mobile').css('opacity', '1');
+
+        } else {
+            $('#btnSubmit-mobile').attr('disabled', 'disabled');
+            $('#btnSubmit-mobile').css('opacity', '0.6');
+        }
+    }
+</script>
 
 </html>
