@@ -52,7 +52,7 @@
             let inputs = document.querySelectorAll('#otp-mobile > *[id]');
             inputs[0].style.setProperty('outline', "none");
             for (let i = 0; i < inputs.length; i++) {
-                inputs[i].addEventListener("keyup", function (event) {
+                inputs[i].addEventListener("keydown", function (event) {
                     let keycode = $(this).val().charCodeAt(0);
                     if (event.key === "Backspace" || keycode === 8) {
                         inputs[i].value = "";
