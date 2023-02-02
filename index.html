@@ -45,22 +45,35 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function (event) {
-
         function OTPInput() {
-            const editor = document.getElementById('first');
+            let editor = document.getElementById('first');
             editor.onpaste = pasteOTP;
 
-            const inputs = document.querySelectorAll('#otp-mobile > *[id]');
+            let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+            inputs[0].style.setProperty('outline', "none");
             for (let i = 0; i < inputs.length; i++) {
                 inputs[i].addEventListener("keyup", function (event) {
-                    if (!event.target.value || event.target.value == '') {
-                        if (event.target.previousSibling.previousSibling) {
-                            event.target.previousSibling.previousSibling.focus();
+                    let keycode = $(this).val().charCodeAt(0);
+                    if (event.key === "Backspace" || keycode === 8) {
+                        inputs[i].value = "";
+                        inputs[i].style.setProperty('outline', "none");
+                        if (i !== 0) {
+                            inputs[i - 1].focus();
                         }
-
                     } else {
-                        if (event.target.nextSibling.nextSibling) {
-                            event.target.nextSibling.nextSibling.focus();
+                        let keycode = $(this).val().charCodeAt(0);
+                        if (i === inputs.length - 1 && inputs[i].value !== "") {
+                            inputs[i].value = String.fromCharCode(keycode);
+                            inputs[i].style.setProperty('outline', "none");
+                            return true;
+                        } else if (keycode > 47 && keycode < 58) {
+                            inputs[i].value = String.fromCharCode(keycode);
+                            inputs[i].style.setProperty('outline', "none");
+                            if (i !== inputs.length - 1) {
+                                inputs[i + 1].focus();
+                                inputs[i + 1].style.setProperty('outline', "none");
+                            }
+                            event.preventDefault();
                         }
                     }
                 });
@@ -68,7 +81,7 @@
         }
         OTPInput();
     });
-    
+
     function pasteOTP(event) {
         event.preventDefault();
         let elm = event.target;
