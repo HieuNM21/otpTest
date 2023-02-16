@@ -1,28 +1,203 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>WebOTP API Demo</title>
-</head>
-<body>
-  <h1>WebOTP API Demo</h1>
-  
-  <p>Enter your OTP code:</p>
-  
-  <div id="otp-input-container">
-    <input type="text" class="otp-input" maxlength="1">
-    <input type="text" class="otp-input" maxlength="1">
-    <input type="text" class="otp-input" maxlength="1">
-    <input type="text" class="otp-input" maxlength="1">
-    <input type="text" class="otp-input" maxlength="1">
-    <input type="text" class="otp-input" maxlength="1">
-  </div>
+<html lang="en">
 
-  <script>
-    var otpCode = "123456"; // Replace with your actual OTP code
-    var inputFields = document.getElementsByClassName("otp-input"); // Get all OTP input fields
-    for (var i = 0; i < otpCode.length; i++) {
-      inputFields[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
-    }
-  </script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
+        integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="content">
+        <div>
+            <form class="form-totp-mobile" id="pin_form-mobile" name="pin_form">
+                <div id="otp-mobile" class="inputs d-flex flex-row justify-content-center mt-2">
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number"
+                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="first"
+                        autofocus="autofocus" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number"
+                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();"
+                        id="second" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number"
+                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();"
+                        id="third" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number"
+                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();"
+                        id="fourth" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number"
+                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fifth"
+                        maxlength="1" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile def-txt-input" type="number"
+                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="sixth"
+                        maxlength="1" />
+                </div>
+                <div class="form-group-btn-mobile">
+                    <input type="button" value="Xác thực" class="btnSubmit-mobile" id="btnSubmitOTP" />
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
+<script>
+    if ('OTPCredential' in window) {
+        document.addEventListener("DOMContentLoaded", function (event) {
+            function OTPInput() {
+                let editor = document.getElementById('first');
+                editor.onpaste = pasteOTP;
+
+                let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+                inputs[0].style.setProperty('outline', "none");
+                for (let i = 0; i < inputs.length; i++) {
+                    inputs[i].addEventListener("keyup", function (event) {
+                        let keycode = $(this).val().charCodeAt(0);
+                        if (event.key === "Backspace" || keycode === 8) {
+                            inputs[i].value = "";
+                            inputs[i].style.setProperty('outline', "none");
+                            if (i !== 0) {
+                                inputs[i - 1].focus();
+                            }
+                        } else {
+                            let keycode = $(this).val().charCodeAt(0);
+                            if (i === inputs.length - 1 && inputs[i].value !== "") {
+                                inputs[i].value = String.fromCharCode(keycode);
+                                inputs[i].style.setProperty('outline', "none");
+                                return true;
+                            } else if (keycode > 47 && keycode < 58) {
+                                inputs[i].value = String.fromCharCode(keycode);
+                                inputs[i].style.setProperty('outline', "none");
+                                if (i !== inputs.length - 1) {
+                                    inputs[i + 1].focus();
+                                    inputs[i + 1].style.setProperty('outline', "none");
+                                }
+                                event.preventDefault();
+                            }
+                        }
+                    });
+                }
+            }
+            OTPInput();
+            // Request the OTP using the WebOTP API
+            navigator.credentials.get({
+                otp: { transport: ['sms'] },
+                signal: new AbortController().signal
+            })
+                .then(otp => {
+                    // Send the OTP to the user
+                    console.log(`OTP: ${otp.code}`);
+
+                    // Listen for changes in the input fields
+                    const inputFields = document.querySelectorAll('input[type="number"]');
+                    for (var i = 0; i < otpCode.length; i++) {
+                        inputFields[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
+                    }
+                })
+                .catch(error => {
+                    console.log(`Failed to get OTP: ${error}`);
+                });
+        });
+        function pasteOTP(event) {
+            event.preventDefault();
+            let elm = event.target;
+            let pasteVal = event.clipboardData.getData('text').split("");
+            if (pasteVal.length > 0) {
+                while (elm) {
+                    elm.value = pasteVal.shift();
+                    elm = elm.nextSibling.nextSibling;
+                }
+            }
+        }
+
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        //disabled pc
+        $('#btnSubmitOTP').attr('disabled', 'disabled');
+
+        //disabled mobile
+        $('#btnSubmitOTP-mobile').attr('disabled', 'disabled');
+
+        $('#btnSubmitOTP-mobile').css('opacity', '0.6');
+    });
+    function inputOtpKeyUpMobile() {
+        const inputOTP1 = $('#first').val();
+        const inputOTP2 = $('#second').val();
+        const inputOTP3 = $('#third').val();
+        const inputOTP4 = $('#fourth').val();
+        const inputOTP5 = $('#fifth').val();
+        const inputOTP6 = $('#sixth').val();
+
+        //Convert int to string
+        const inputOTP1String = inputOTP1.toString();
+        const inputOTP2String = inputOTP2.toString();
+        const inputOTP3String = inputOTP3.toString();
+        const inputOTP4String = inputOTP4.toString();
+        const inputOTP5String = inputOTP5.toString();
+        const inputOTP6String = inputOTP6.toString();
+
+        console.log(inputOTP1String + inputOTP2String + inputOTP3String + inputOTP4String + inputOTP5String + inputOTP6String);
+
+
+        if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
+            $('#btnSubmitOTP-mobile').removeAttr('disabled');
+            $('#btnSubmitOTP-mobile').css('opacity', '1');
+        } else {
+            $('#btnSubmitOTP-mobile').attr('disabled', 'disabled');
+            $('#btnSubmitOTP-mobile').css('opacity', '0.6');
+        }
+    }
+</script>
+
+
+<!-- <script>
+    function handleCharacter(event) {
+        var $input = $(this),
+            index = getIndex($input),
+            digit = $input.val().slice(0, 1),
+            rest = $input.val().slice(1),
+            $next;
+
+        if (rest.length > 0) {
+            $input.val(digit);  // trim input value to just one character
+            $next = $('.def-txt-input[name="chars[' + (index + 1) + ']"]');
+
+            if ($next.length > 0) {
+                $next.val(rest);  // push the rest of the value into the next input
+                $next.focus();
+                handleCharacter.call($next, event);  // run the same code on the next input
+            }
+        }
+    }
+
+    function handleBackspace(event) {
+        var $input = $(this),
+            index = getIndex($input),
+            $prev;
+
+        // if the user pressed backspace and the input is empty
+        if (event.which === 8 && !$(this).val()) {
+            $prev = $('.def-txt-input[name="chars[' + (index - 1) + ']"]');
+            $prev.focus();
+        }
+    }
+
+    function getIndex($input) {
+        return parseInt($input.attr('name').split(/[\[\]]/)[1], 10);
+    }
+
+    $('.def-txt-input')
+        .on('keyup', handleCharacter)
+        .on('keydown', handleBackspace);
+
+</script> -->
+
+
 </html>
