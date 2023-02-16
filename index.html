@@ -1,57 +1,57 @@
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
 
-<head>
-  <meta charset="UTF-8">
-  <title>WebOTP Demo</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>WebOTP Demo</title>
+  </head>
 
-<body>
-  <form>
-    <input type="number" inputmode="numeric" id="digit1" size="1" maxlength="1" autocomplete="one-time-code">
-    <input type="number" inputmode="numeric" id="digit2" size="1" maxlength="1" autocomplete="one-time-code">
-    <input type="number" inputmode="numeric" id="digit3" size="1" maxlength="1" autocomplete="one-time-code">
-    <input type="number" inputmode="numeric" id="digit4" size="1" maxlength="1" autocomplete="one-time-code">
-    <input type="number" inputmode="numeric" id="digit5" size="1" maxlength="1" autocomplete="one-time-code">
-    <input type="number" inputmode="numeric" id="digit6" size="1" maxlength="1" autocomplete="one-time-code">
-    <input type="submit" value="Submit">
-  </form>
+  <body>
+    <form>
+      <input type="number" inputmode="numeric" id="digit1" maxlength="1" autocomplete="one-time-code"> </br>
+      <input type="number" inputmode="numeric" id="digit2" maxlength="1" autocomplete="one-time-code"> </br>
+      <input type="number" inputmode="numeric" id="digit3" maxlength="1" autocomplete="one-time-code"> </br>
+      <input type="number" inputmode="numeric" id="digit4" maxlength="1" autocomplete="one-time-code"> </br>
+      <input type="number" inputmode="numeric" id="digit5" maxlength="1" autocomplete="one-time-code"> </br>
+      <input type="number" inputmode="numeric" id="digit6" maxlength="1" autocomplete="one-time-code"> </br>
+      <input type="submit" value="Submit">
+    </form>
 
-  <script>
-    // Feature detection
-    if ('OTPCredential' in window) {
-      window.addEventListener('DOMContentLoaded', e => {
-        const input = document.querySelector('input[autocomplete="one-time-code"]');
-        if (!input) return;
-        // Cancel the WebOTP API if the form is submitted manually.
-        const ac = new AbortController();
-        const form = input.closest('form');
-        if (form) {
-          form.addEventListener('submit', e => {
-            // Cancel the WebOTP API.
-            ac.abort();
+    <script>
+      // Feature detection
+      if ('OTPCredential' in window) {
+        window.addEventListener('DOMContentLoaded', e => {
+          const input = document.querySelector('input[autocomplete="one-time-code"]');
+          if (!input) return;
+          // Cancel the WebOTP API if the form is submitted manually.
+          const ac = new AbortController();
+          const form = input.closest('form');
+          if (form) {
+            form.addEventListener('submit', e => {
+              // Cancel the WebOTP API.
+              ac.abort();
+            });
+          }
+          // Invoke the WebOTP API
+          navigator.credentials.get({
+            otp: { transport: ['sms'] },
+            signal: ac.signal
+          }).then(otp => {
+            console.log(otp);
+            document.getElementById('digit1').value = otp.charAt(0);
+            document.getElementById('digit2').value = otp.charAt(1);
+            document.getElementById('digit3').value = otp.charAt(2);
+            document.getElementById('digit4').value = otp.charAt(3);
+            document.getElementById('digit5').value = otp.charAt(4);
+            document.getElementById('digit6').value = otp.charAt(5);
+            // Automatically submit the form when an OTP is obtained.
+            // if (form) form.submit();
+          }).catch(err => {
+            console.log(err);
           });
-        }
-        // Invoke the WebOTP API
-        navigator.credentials.get({
-          otp: { transport: ['sms'] },
-          signal: ac.signal
-        }).then(otp => {
-          console.log(otp);
-          document.getElementById('digit1').value = otp.charAt(0);
-          document.getElementById('digit2').value = otp.charAt(1);
-          document.getElementById('digit3').value = otp.charAt(2);
-          document.getElementById('digit4').value = otp.charAt(3);
-          document.getElementById('digit5').value = otp.charAt(4);
-          document.getElementById('digit6').value = otp.charAt(5);
-          // Automatically submit the form when an OTP is obtained.
-          // if (form) form.submit();
-        }).catch(err => {
-          console.log(err);
         });
-      });
-    }
-  </script>
-</body>
+      }
+    </script>
+  </body>
 
-</html>
+  </html>
