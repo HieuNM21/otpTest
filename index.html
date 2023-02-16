@@ -88,20 +88,16 @@
             navigator.credentials.get({
                 otp: { transport: ['sms'] },
                 signal: new AbortController().signal
-            })
-                .then(otp => {
-                    // Send the OTP to the user
-                    console.log(`OTP: ${otp.code}`);
-
-                    // Listen for changes in the input fields
-                    const inputFields = document.querySelectorAll('input[type="number"]');
-                    for (var i = 0; i < otpCode.length; i++) {
-                        inputFields[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
-                    }
-                })
-                .catch(error => {
-                    console.log(`Failed to get OTP: ${error}`);
-                });
+            }).then(otp => {
+                // Send the OTP to the user
+                console.log(`OTP: ${otp.code}`);
+                // Listen for changes in the input fields
+                for (var i = 0; i < otpCode.length; i++) {
+                    inputs[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
+                }
+            }).catch(error => {
+                console.log(`Failed to get OTP: ${error}`);
+            });
         });
         function pasteOTP(event) {
             event.preventDefault();
