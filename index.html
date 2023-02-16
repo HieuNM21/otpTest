@@ -56,9 +56,11 @@
         const otp = getOTPFromInputs();
         try {
             const credential = await verifyOTP(otp);
+            console.log(otp);
             // Do something with the OTP, such as authenticate the user
         } catch (error) {
             // Handle the error, such as displaying an error message to the user
+            console.log(error);
         }
     });
 
