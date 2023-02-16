@@ -6,7 +6,7 @@
   <title>WebOTP Demo</title>
 </head>
 
-<body>
+<body onload="getOTP()">
   <form>
     <label for="digit1">Digit 1:</label>
     <input type="text" id="digit1" size="1" maxlength="1">
@@ -20,27 +20,29 @@
     <input type="text" id="digit5" size="1" maxlength="1">
     <label for="digit6">Digit 6:</label>
     <input type="text" id="digit6" size="1" maxlength="1">
-    <br><br>
-    <button id="otpButton">Get OTP</button>
   </form>
 
   <script>
-    const otpButton = document.getElementById('otpButton');
-    otpButton.addEventListener('click', () => {
-      navigator.credentials.get({ otp: { transport: ['sms'] } })
-        .then((credential) => {
-          const otp = credential.code;
-          document.getElementById('digit1').value = otp.charAt(0);
-          document.getElementById('digit2').value = otp.charAt(1);
-          document.getElementById('digit3').value = otp.charAt(2);
-          document.getElementById('digit4').value = otp.charAt(3);
-          document.getElementById('digit5').value = otp.charAt(4);
-          document.getElementById('digit6').value = otp.charAt(5);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
+    function getOTP() {
+      if ('OTPCredential' in window) {
+        navigator.credentials.get({ otp: { transport: ['sms'] } })
+          .then((credential) => {
+            const otp = credential.code;
+            document.getElementById('digit1').value = otp.charAt(0);
+            document.getElementById('digit2').value = otp.charAt(1);
+            document.getElementById('digit3').value = otp.charAt(2);
+            document.getElementById('digit4').value = otp.charAt(3);
+            document.getElementById('digit5').value = otp.charAt(4);
+            document.getElementById('digit6').value = otp.charAt(5);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        // Display an error message or provide a fallback option
+        console.log('WebOTP API not supported');
+      }
+    }
   </script>
 </body>
 
