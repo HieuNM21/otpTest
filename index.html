@@ -6,6 +6,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="input-container">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp-1" name="otp-1" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
+            required>
+        <input type="text" id="otp-2" name="otp-2" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
+            required>
+        <input type="text" id="otp-3" name="otp-3" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
+            required>
+        <input type="text" id="otp-4" name="otp-4" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
+            required>
+        <input type="text" id="otp-5" name="otp-5" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
+            required>
+        <input type="text" id="otp-6" name="otp-6" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
+            required>
+
+    </div>
+</body>
+<script>
+    const getOTPFromInputs = () => {
+        const otp1 = document.querySelector('#otp-1').value;
+        const otp2 = document.querySelector('#otp-2').value;
+        const otp3 = document.querySelector('#otp-3').value;
+        const otp4 = document.querySelector('#otp-4').value;
+        const otp5 = document.querySelector('#otp-5').value;
+        const otp6 = document.querySelector('#otp-6').value;
+        return otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+    };
+
+    const verifyOTP = async (otp) => {
+        try {
+            const credential = await navigator.credentials.get({
+                otp: { transport: ['sms'], code: otp }
+            });
+            return credential;
+        } catch (error) {
+            console.error('Error verifying OTP:', error);
+            throw error;
+        }
+    };
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const otp = getOTPFromInputs();
+        try {
+            const credential = await verifyOTP(otp);
+            // Do something with the OTP, such as authenticate the user
+        } catch (error) {
+            // Handle the error, such as displaying an error message to the user
+        }
+    });
+
+</script>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
@@ -182,3 +250,4 @@
 </script>
 
 </html>
+ -->
