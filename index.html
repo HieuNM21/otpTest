@@ -49,6 +49,20 @@
 <script>
     if ('OTPCredential' in window) {
         document.addEventListener("DOMContentLoaded", function (event) {
+            // Request the OTP using the WebOTP API
+            navigator.credentials.get({
+                otp: { transport: ['sms'] },
+                signal: new AbortController().signal
+            }).then(otp => {
+                // Send the OTP to the user
+                console.log(`OTP: ${otp.code}`);
+                // Listen for changes in the input fields
+                for (var i = 0; i < otpCode.length; i++) {
+                    inputs[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
+                }
+            }).catch(error => {
+                console.log(`Failed to get OTP: ${error}`);
+            });
             function OTPInput() {
                 let editor = document.getElementById('first');
                 editor.onpaste = pasteOTP;
@@ -84,20 +98,6 @@
                 }
             }
             OTPInput();
-            // Request the OTP using the WebOTP API
-            navigator.credentials.get({
-                otp: { transport: ['sms'] },
-                signal: new AbortController().signal
-            }).then(otp => {
-                // Send the OTP to the user
-                console.log(`OTP: ${otp.code}`);
-                // Listen for changes in the input fields
-                for (var i = 0; i < otpCode.length; i++) {
-                    inputs[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
-                }
-            }).catch(error => {
-                console.log(`Failed to get OTP: ${error}`);
-            });
         });
         function pasteOTP(event) {
             event.preventDefault();
