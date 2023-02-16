@@ -1,53 +1,28 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>WebOTP API Demo</title>
+  <title>WebOTP API Demo</title>
 </head>
-
 <body>
-    <h1>WebOTP API Demo</h1>
-    <p>Enter your phone number and click the button to receive an OTP code:</p>
-    <input type="tel" id="phone-number" placeholder="Enter your phone number">
-    <button id="send-otp-btn">Send OTP</button>
+  <h1>WebOTP API Demo</h1>
+  
+  <p>Enter your OTP code:</p>
+  
+  <div id="otp-input-container">
+    <input type="text" class="otp-input" maxlength="1">
+    <input type="text" class="otp-input" maxlength="1">
+    <input type="text" class="otp-input" maxlength="1">
+    <input type="text" class="otp-input" maxlength="1">
+    <input type="text" class="otp-input" maxlength="1">
+    <input type="text" class="otp-input" maxlength="1">
+  </div>
 
-    <div id="otp-input-container">
-        <input type="text" class="otp-input" maxlength="1">
-        <input type="text" class="otp-input" maxlength="1">
-        <input type="text" class="otp-input" maxlength="1">
-        <input type="text" class="otp-input" maxlength="1">
-        <input type="text" class="otp-input" maxlength="1">
-        <input type="text" class="otp-input" maxlength="1">
-    </div>
-
-    <script>
-        // When the user clicks the "Send OTP" button, generate and send an OTP code
-        document.getElementById("send-otp-btn").addEventListener("click", function () {
-            var phoneNumber = document.getElementById("phone-number").value;
-            var message = "Your OTP code is: 123456"; // Replace with your actual OTP message
-
-            // Use the WebOTP API to send the message to the user's phone number
-            navigator.credentials.create({
-                otp: { transport: ['sms'] },
-                signal: new AbortController().signal
-            }).then(function (otp) {
-                console.log("OTP sent to " + phoneNumber);
-            }).catch(function (error) {
-                console.error("Error sending OTP: " + error);
-            });
-        });
-
-        // After the user receives the OTP code, fill it in automatically
-        navigator.credentials.get({ otp: { transport: ['sms'] } }).then(function (otp) {
-            var code = otp.code; // Extract the OTP code from the response
-            var inputFields = document.getElementsByClassName("otp-input"); // Get all OTP input fields
-            for (var i = 0; i < code.length; i++) {
-                inputFields[i].value = code.charAt(i); // Fill in each input field with a single digit
-            }
-        }).catch(function (error) {
-            console.error("Error getting OTP: " + error);
-        });
-    </script>
+  <script>
+    var otpCode = "123456"; // Replace with your actual OTP code
+    var inputFields = document.getElementsByClassName("otp-input"); // Get all OTP input fields
+    for (var i = 0; i < otpCode.length; i++) {
+      inputFields[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
+    }
+  </script>
 </body>
-
 </html>
