@@ -32,45 +32,49 @@
     </form>
 </body>
 <script>
-    const getOTPFromInputs = () => {
-        const otp1 = document.querySelector('#otp-1').value;
-        const otp2 = document.querySelector('#otp-2').value;
-        const otp3 = document.querySelector('#otp-3').value;
-        const otp4 = document.querySelector('#otp-4').value;
-        const otp5 = document.querySelector('#otp-5').value;
-        const otp6 = document.querySelector('#otp-6').value;
-        return otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-    };
+    if ('OTPCredential' in window) {
+        window.addEventListener('DOMContentLoaded', e => {
+            const getOTPFromInputs = () => {
+                const otp1 = document.querySelector('#otp-1').value;
+                const otp2 = document.querySelector('#otp-2').value;
+                const otp3 = document.querySelector('#otp-3').value;
+                const otp4 = document.querySelector('#otp-4').value;
+                const otp5 = document.querySelector('#otp-5').value;
+                const otp6 = document.querySelector('#otp-6').value;
+                return otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+            };
 
-    const verifyOTP = async (otp) => {
-        try {
-            const credential = await navigator.credentials.get({
-                otp: { transport: ['sms'], code: otp }
+            const verifyOTP = async (otp) => {
+                try {
+                    const credential = await navigator.credentials.get({
+                        otp: { transport: ['sms'], code: otp }
+                    });
+                    return credential;
+                } catch (error) {
+                    console.error('Error verifying OTP:', error);
+                    throw error;
+                }
+            };
+
+            const form = document.querySelector('form');
+            const otpFallback = document.querySelector('#otp-fallback');
+            const otpError = document.querySelector('#otp-error');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const otp = getOTPFromInputs();
+
+                try {
+                    const credential = await verifyOTP(otp);
+                    console.log('Credential:', credential);
+                    // Your code to process the verified credential here
+                } catch (error) {
+                    otpFallback.style.display = 'block';
+                    otpError.style.display = 'block';
+                }
             });
-            return credential;
-        } catch (error) {
-            console.error('Error verifying OTP:', error);
-            throw error;
-        }
-    };
-
-    const form = document.querySelector('form');
-    const otpFallback = document.querySelector('#otp-fallback');
-    const otpError = document.querySelector('#otp-error');
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        otpFallback.style.display = 'none';
-        otpError.style.display = 'none';
-        const otp = getOTPFromInputs();
-        try {
-            const credential = await verifyOTP(otp);
-            console.log('Credential:', credential);
-            // Your code to process the verified credential here
-        } catch (error) {
-            otpFallback.style.display = 'block';
-            otpError.style.display = 'block';
-        }
-    });
+        })
+    }
 </script>
 
 </html>
