@@ -42,106 +42,111 @@
         </div>
     </div>
 </body>
+<script>
+    if ('OTPCredential' in window) {
+        document.addEventListener("DOMContentLoaded", function (event) {
+            function OTPInput() {
+                let editor = document.getElementById('first');
+                editor.onpaste = pasteOTP;
 
-    <script>
-    // Request the OTP using the WebOTP API
-    navigator.credentials.get({
-      otp: { transport: ['sms'] },
-      signal: new AbortController().signal
-    })
-    .then(otp => {
-      // Send the OTP to the user
-      console.log(`OTP: ${otp.code}`);
-  
-      // Listen for changes in the input fields
-      const inputFields = document.querySelectorAll('input[type="number"]');
-      inputFields.forEach((input, index) => {
-        input.addEventListener('input', (event) => {
-          const value = event.target.value;
-          if (value) {
-            if (index < inputFields.length - 1) {
-              inputFields[index + 1].focus();
-            } else {
-              const otpValue = Array.from(inputFields).map(input => input.value).join('');
-              verifyOTP(otpValue);
-            }
-          }
-        });
-      });
-  
-      // Verify the OTP
-      function verifyOTP(otp) {
-        navigator.credentials.get({
-          otp: { transport: ['sms'] },
-          signal: new AbortController().signal
-        })
-        .then(otp => {
-          console.log('OTP verified!');
-          // Log the user in or perform any other necessary action
-        })
-        .catch(error => {
-          console.log(`OTP verification failed: ${error}`);
-        });
-      }
-    })
-    .catch(error => {
-      console.log(`Failed to get OTP: ${error}`);
-    });
-  </script>
-    
-<!-- <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        function OTPInput() {
-            let editor = document.getElementById('first');
-            editor.onpaste = pasteOTP;
-
-            let inputs = document.querySelectorAll('#otp-mobile > *[id]');
-            inputs[0].style.setProperty('outline', "none");
-            for (let i = 0; i < inputs.length; i++) {
-                inputs[i].addEventListener("keyup", function (event) {
-                    let keycode = $(this).val().charCodeAt(0);
-                    if (event.key === "Backspace" || keycode === 8) {
-                        inputs[i].value = "";
-                        inputs[i].style.setProperty('outline', "none");
-                        if (i !== 0) {
-                            inputs[i - 1].focus();
-                        }
-                    } else {
+                let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+                inputs[0].style.setProperty('outline', "none");
+                for (let i = 0; i < inputs.length; i++) {
+                    inputs[i].addEventListener("keyup", function (event) {
                         let keycode = $(this).val().charCodeAt(0);
-                        if (i === inputs.length - 1 && inputs[i].value !== "") {
-                            inputs[i].value = String.fromCharCode(keycode);
+                        if (event.key === "Backspace" || keycode === 8) {
+                            inputs[i].value = "";
                             inputs[i].style.setProperty('outline', "none");
-                            return true;
-                        } else if (keycode > 47 && keycode < 58) {
-                            inputs[i].value = String.fromCharCode(keycode);
-                            inputs[i].style.setProperty('outline', "none");
-                            if (i !== inputs.length - 1) {
-                                inputs[i + 1].focus();
-                                inputs[i + 1].style.setProperty('outline', "none");
+                            if (i !== 0) {
+                                inputs[i - 1].focus();
                             }
-                            event.preventDefault();
+                        } else {
+                            let keycode = $(this).val().charCodeAt(0);
+                            if (i === inputs.length - 1 && inputs[i].value !== "") {
+                                inputs[i].value = String.fromCharCode(keycode);
+                                inputs[i].style.setProperty('outline', "none");
+                                return true;
+                            } else if (keycode > 47 && keycode < 58) {
+                                inputs[i].value = String.fromCharCode(keycode);
+                                inputs[i].style.setProperty('outline', "none");
+                                if (i !== inputs.length - 1) {
+                                    inputs[i + 1].focus();
+                                    inputs[i + 1].style.setProperty('outline', "none");
+                                }
+                                event.preventDefault();
+                            }
                         }
-                    }
+                    });
+                }
+            }
+            OTPInput();
+        });
+        function pasteOTP(event) {
+            event.preventDefault();
+            let elm = event.target;
+            let pasteVal = event.clipboardData.getData('text').split("");
+            if (pasteVal.length > 0) {
+                while (elm) {
+                    elm.value = pasteVal.shift();
+                    elm = elm.nextSibling.nextSibling;
+                }
+            }
+        }
+        // Request the OTP using the WebOTP API
+        navigator.credentials.get({
+            otp: { transport: ['sms'] },
+            signal: new AbortController().signal
+        })
+            .then(otp => {
+                // Send the OTP to the user
+                console.log(`OTP: ${otp.code}`);
+
+                // Listen for changes in the input fields
+                const inputFields = document.querySelectorAll('input[type="number"]');
+                inputFields.forEach((input, index) => {
+                    input.addEventListener('input', (event) => {
+                        const value = event.target.value;
+                        if (value) {
+                            if (index < inputFields.length - 1) {
+                                inputFields[index + 1].focus();
+                            } else {
+                                const otpValue = Array.from(inputFields).map(input => input.value).join('');
+                                verifyOTP(otpValue);
+                            }
+                        }
+                    });
                 });
-            }
-        }
-        OTPInput();
-    });
 
-    function pasteOTP(event) {
-        event.preventDefault();
-        let elm = event.target;
-        let pasteVal = event.clipboardData.getData('text').split("");
-        if (pasteVal.length > 0) {
-            while (elm) {
-                elm.value = pasteVal.shift();
-                elm = elm.nextSibling.nextSibling;
-            }
-        }
+                // Verify the OTP
+                function verifyOTP(otp) {
+                    navigator.credentials.get({
+                        otp: { transport: ['sms'] },
+                        signal: new AbortController().signal
+                    })
+                        .then(otp => {
+                            console.log('OTP verified!');
+                            // Log the user in or perform any other necessary action
+                        })
+                        .catch(error => {
+                            console.log(`OTP verification failed: ${error}`);
+                        });
+                }
+            })
+            .catch(error => {
+                console.log(`Failed to get OTP: ${error}`);
+            });
     }
-
 </script>
 <script>
+    $(document).ready(function () {
+        //disabled pc
+        $('#btnSubmitOTP').attr('disabled', 'disabled');
+
+        //disabled mobile
+        $('#btnSubmitOTP-mobile').attr('disabled', 'disabled');
+
+        $('#btnSubmitOTP-mobile').css('opacity', '0.6');
+    });
     function inputOtpKeyUpMobile() {
         const inputOTP1 = $('#first').val();
         const inputOTP2 = $('#second').val();
@@ -150,7 +155,7 @@
         const inputOTP5 = $('#fifth').val();
         const inputOTP6 = $('#sixth').val();
 
-        //convert int to string
+        //Convert int to string
         const inputOTP1String = inputOTP1.toString();
         const inputOTP2String = inputOTP2.toString();
         const inputOTP3String = inputOTP3.toString();
@@ -158,16 +163,17 @@
         const inputOTP5String = inputOTP5.toString();
         const inputOTP6String = inputOTP6.toString();
 
+        console.log(inputOTP1String + inputOTP2String + inputOTP3String + inputOTP4String + inputOTP5String + inputOTP6String);
+
 
         if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
-            $('#btnSubmit-mobile').removeAttr('disabled');
-            $('#btnSubmit-mobile').css('opacity', '1');
-
+            $('#btnSubmitOTP-mobile').removeAttr('disabled');
+            $('#btnSubmitOTP-mobile').css('opacity', '1');
         } else {
-            $('#btnSubmit-mobile').attr('disabled', 'disabled');
-            $('#btnSubmit-mobile').css('opacity', '0.6');
+            $('#btnSubmitOTP-mobile').attr('disabled', 'disabled');
+            $('#btnSubmitOTP-mobile').css('opacity', '0.6');
         }
     }
-</script> -->
+</script>
 
 </html>
