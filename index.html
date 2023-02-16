@@ -10,69 +10,76 @@
 </head>
 
 <body>
-    <form>
-        <label for="otp">Enter OTP:</label>
-        <input type="text" id="otp-1" name="otp-1" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
-            required>
-        <input type="text" id="otp-2" name="otp-2" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
-            required>
-        <input type="text" id="otp-3" name="otp-3" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
-            required>
-        <input type="text" id="otp-4" name="otp-4" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
-            required>
-        <input type="text" id="otp-5" name="otp-5" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
-            required>
-        <input type="text" id="otp-6" name="otp-6" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
-            required>
-        <button type="submit">Submit</button>
-        <p id="otp-error" style="color: red; display: none;">Error verifying OTP</p>
-        <p id="otp-fallback" style="display: none;">
-            Can't detect OTP automatically. Please enter the OTP manually.
-        </p>
+    <form id="otp-form">
+        <div>
+            <input type="text" id="otp-1" maxlength="1" required>
+            <input type="text" id="otp-2" maxlength="1" required>
+            <input type="text" id="otp-3" maxlength="1" required>
+            <input type="text" id="otp-4" maxlength="1" required>
+            <input type="text" id="otp-5" maxlength="1" required>
+            <input type="text" id="otp-6" maxlength="1" required>
+        </div>
+        <button type="submit">Verify OTP</button>
     </form>
+
+    <div id="otp-fallback" style="display: none;">
+        <p>The WebOTP API is not supported in this browser. Please enter the OTP manually.</p>
+        <input type="text" id="manual-otp">
+        <button type="submit" id="manual-otp-submit">Submit</button>
+    </div>
 </body>
 <script>
     if ('OTPCredential' in window) {
         window.addEventListener('DOMContentLoaded', e => {
-            const getOTPFromInputs = () => {
-                const otp1 = document.querySelector('#otp-1').value;
-                const otp2 = document.querySelector('#otp-2').value;
-                const otp3 = document.querySelector('#otp-3').value;
-                const otp4 = document.querySelector('#otp-4').value;
-                const otp5 = document.querySelector('#otp-5').value;
-                const otp6 = document.querySelector('#otp-6').value;
-                return otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-            };
+            const otpForm = document.querySelector('#otp-form');
+            const otpInputs = otpForm.querySelectorAll('input');
+            const otpFallback = document.querySelector('#otp-fallback');
+            const manualOTPInput = document.querySelector('#manual-otp');
 
-            const verifyOTP = async (otp) => {
+            otpForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const otp = Array.from(otpInputs).map(input => input.value).join('');
+                console.log(otp);
                 try {
                     const credential = await navigator.credentials.get({
                         otp: { transport: ['sms'], code: otp }
                     });
-                    return credential;
+                    console.log('Credential:', credential);
+                    // Do something with the verified credential
                 } catch (error) {
                     console.error('Error verifying OTP:', error);
-                    throw error;
+                    otpFallback.style.display = 'block';
                 }
-            };
+            });
 
-            const form = document.querySelector('form');
-            const otpFallback = document.querySelector('#otp-fallback');
-            const otpError = document.querySelector('#otp-error');
-
-            form.addEventListener('submit', async (event) => {
+            manualOTPInput.addEventListener('submit', async (event) => {
                 event.preventDefault();
-                const otp = getOTPFromInputs();
-
+                const otp = manualOTPInput.value;
                 try {
                     const credential = await verifyOTP(otp);
                     console.log('Credential:', credential);
-                    // Your code to process the verified credential here
+                    // Do something with the verified credential
                 } catch (error) {
+                    console.error('Error verifying OTP:', error);
                     otpFallback.style.display = 'block';
-                    otpError.style.display = 'block';
                 }
             });
+
+            function verifyOTP(otp) {
+                return new Promise((resolve, reject) => {
+                    const ac = new AbortController();
+                    const signal = ac.signal;
+                    setTimeout(() => ac.abort(), 30000);
+
+                    navigator.credentials.get({ otp: { transport: ['sms'], code: otp } }, { signal })
+                        .then((credential) => {
+                            resolve(credential);
+                        })
+                        .catch((error) => {
+                            reject(error);
+                        });
+                });
+            }
         })
     }
 </script>
