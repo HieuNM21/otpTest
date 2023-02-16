@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="input-container">
+    <form>
         <label for="otp">Enter OTP:</label>
         <input type="text" id="otp-1" name="otp-1" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
             required>
@@ -24,8 +24,12 @@
             required>
         <input type="text" id="otp-6" name="otp-6" pattern="[0-9]*" inputmode="numeric" minlength="1" maxlength="1"
             required>
-
-    </div>
+        <button type="submit">Submit</button>
+        <p id="otp-error" style="color: red; display: none;">Error verifying OTP</p>
+        <p id="otp-fallback" style="display: none;">
+            Can't detect OTP automatically. Please enter the OTP manually.
+        </p>
+    </form>
 </body>
 <script>
     const getOTPFromInputs = () => {
@@ -51,19 +55,22 @@
     };
 
     const form = document.querySelector('form');
+    const otpFallback = document.querySelector('#otp-fallback');
+    const otpError = document.querySelector('#otp-error');
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        otpFallback.style.display = 'none';
+        otpError.style.display = 'none';
         const otp = getOTPFromInputs();
         try {
             const credential = await verifyOTP(otp);
-            console.log(otp);
-            // Do something with the OTP, such as authenticate the user
+            console.log('Credential:', credential);
+            // Your code to process the verified credential here
         } catch (error) {
-            // Handle the error, such as displaying an error message to the user
-            console.log(error);
+            otpFallback.style.display = 'block';
+            otpError.style.display = 'block';
         }
     });
-
 </script>
 
 </html>
