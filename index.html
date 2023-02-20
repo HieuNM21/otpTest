@@ -27,17 +27,10 @@
         console.log('Feature Available');
       }
       window.addEventListener('DOMContentLoaded', e => {
-        const input = document.querySelector('input[autocomplete="one-time-code"]');
-        if (!input) return;
+        const inputs = document.querySelectorAll('input[autocomplete="one-time-code"]');
+        if (!inputs) return;
         // Cancel the WebOTP API if the form is submitted manually.
         const ac = new AbortController();
-        const form = input.closest('form');
-        if (form) {
-          form.addEventListener('submit', e => {
-            // Cancel the WebOTP API.
-            ac.abort();
-          });
-        }
         // Invoke the WebOTP API
         navigator.credentials.get({
           otp: { transport: ['sms'] },
