@@ -3,53 +3,86 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>WebOTP Demo</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
+    integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <form>
-    <input type="number" inputmode="numeric" id="digit1" maxlength="1" autocomplete="one-time-code"> </br>
-    <input type="number" inputmode="numeric" id="digit2" maxlength="1" autocomplete="one-time-code"> </br>
-    <input type="number" inputmode="numeric" id="digit3" maxlength="1" autocomplete="one-time-code"> </br>
-    <input type="number" inputmode="numeric" id="digit4" maxlength="1" autocomplete="one-time-code"> </br>
-    <input type="number" inputmode="numeric" id="digit5" maxlength="1" autocomplete="one-time-code"> </br>
-    <input type="number" inputmode="numeric" id="digit6" maxlength="1" autocomplete="one-time-code"> </br>
-    <input type="submit" value="Submit">
-  </form>
+  <div class="content">
+    <form>
+      <input type="number" id="otp-1" name="otp-1" maxlength="1" autocomplete="one-time-code">
+      <input type="number" id="otp-2" name="otp-2" maxlength="1" autocomplete="one-time-code">
+      <input type="number" id="otp-3" name="otp-3" maxlength="1" autocomplete="one-time-code">
+      <input type="number" id="otp-4" name="otp-4" maxlength="1" autocomplete="one-time-code">
+      <input type="number" id="otp-5" name="otp-5" maxlength="1" autocomplete="one-time-code">
+      <input type="number" id="otp-6" name="otp-6" maxlength="1" autocomplete="one-time-code">
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
 
   <script>
-    // Feature detection
-    if ('OTPCredential' in window) {
-      if (!window.OTPCredential) {
-        console.log('Feature Not Available');
-      }
-      else {
-        console.log('Feature Available');
-      }
-      window.addEventListener('DOMContentLoaded', e => {
-        const inputs = document.querySelectorAll('input[autocomplete="one-time-code"]');
-        if (!inputs) return;
-        // Cancel the WebOTP API if the form is submitted manually.
-        const ac = new AbortController();
-        // Invoke the WebOTP API
-        navigator.credentials.get({
-          otp: { transport: ['sms'] },
-          signal: ac.signal
-        }).then(otp => {
-          console.log(otp);
-          document.getElementById('digit1').value = otp.charAt(0);
-          document.getElementById('digit2').value = otp.charAt(1);
-          document.getElementById('digit3').value = otp.charAt(2);
-          document.getElementById('digit4').value = otp.charAt(3);
-          document.getElementById('digit5').value = otp.charAt(4);
-          document.getElementById('digit6').value = otp.charAt(5);
-          // Automatically submit the form when an OTP is obtained.
-          // if (form) form.submit();
-        }).catch(err => {
-          console.log(err);
-        });
+    const otpInputs = document.querySelectorAll('input[type="number"][autocomplete="one-time-code"]');
+    const otpCode = [];
+
+    for (let i = 0; i < otpInputs.length; i++) {
+      otpInputs[i].addEventListener('input', function () {
+        if (this.value) {
+          otpCode[i] = this.value;
+          if (i < otpInputs.length - 1) {
+            otpInputs[i + 1].focus();
+          }
+          if (i === otpInputs.length - 2 && otpInputs[i + 1].value) {
+            otpInputs[i + 1].blur();
+            otpInputs[i + 2].focus();
+          }
+        }
       });
+
+      otpInputs[i].addEventListener('keydown', function (event) {
+        if (event.key === 'Backspace') {
+          otpCode[i] = '';
+          if (i > 0) {
+            otpInputs[i - 1].focus();
+          }
+        }
+      });
+
+      if (i === otpInputs.length - 1) {
+        otpInputs[i].addEventListener('input', function () {
+          if (this.value.length > 1) {
+            this.value = this.value.slice(0, 1);
+          }
+          otpCode[i] = this.value;
+        });
+
+        otpInputs[i].addEventListener('keyup', function (event) {
+          if (event.key === 'Backspace' || event.key === 'Delete') {
+            if (!this.value) {
+              otpCode[i] = '';
+            }
+            if (i > 0) {
+              otpInputs[i - 1].focus();
+            }
+          }
+        });
+      }
     }
+
+    document.querySelector('form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const enteredOtp = otpCode.join('');
+      // do something with the OTP code here
+      console.log('OTP code entered:', enteredOtp);
+    });
+
   </script>
 </body>
 
