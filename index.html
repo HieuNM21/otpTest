@@ -15,93 +15,73 @@
 </head>
 
 <body>
-  <div class="content">
-    <form>
-      <input type="number" id="otp-1" name="otp-1" maxlength="1" autocomplete="one-time-code">
-      <input type="number" id="otp-2" name="otp-2" maxlength="1" autocomplete="one-time-code">
-      <input type="number" id="otp-3" name="otp-3" maxlength="1" autocomplete="one-time-code">
-      <input type="number" id="otp-4" name="otp-4" maxlength="1" autocomplete="one-time-code">
-      <input type="number" id="otp-5" name="otp-5" maxlength="1" autocomplete="one-time-code">
-      <input type="number" id="otp-6" name="otp-6" maxlength="1" autocomplete="one-time-code">
-      <input type="submit" value="Submit">
-    </form>
-
+  <div id="otp-input">
+    <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
+    <input type="number" inputmode="numeric" pattern="[0-9]*" maxlength="1" />
   </div>
 
+
   <script>
-    const otpInputs = document.querySelectorAll('input[type="number"][autocomplete="one-time-code"]');
-const otpCode = [];
+    const otpInputs = document.querySelectorAll('#otp-input input');
 
-for (let i = 0; i < otpInputs.length; i++) {
-  otpInputs[i].addEventListener('input', function() {
-    if (this.value) {
-      otpCode[i] = this.value;
-      if (i < otpInputs.length - 1) {
-        otpInputs[i + 1].focus();
-      }
-      if (i === otpInputs.length - 2 && otpInputs[i + 1].value) {
-        otpInputs[i + 1].blur();
-        otpInputs[i + 2].focus();
-      }
-    } else {
-      otpCode[i] = '';
-    }
-  });
+    // Set focus on first input field by default
+    otpInputs[0].focus();
 
-  otpInputs[i].addEventListener('keydown', function(event) {
-    if (event.key === 'Backspace') {
-      otpCode[i] = '';
-      if (i > 0) {
-        otpInputs[i - 1].focus();
-      }
-    }
-  });
-
-  otpInputs[i].addEventListener('paste', function(event) {
-    event.preventDefault();
-    const pastedText = event.clipboardData.getData('text/plain').trim();
-    const pastedDigits = pastedText.split('');
-    let index = i;
-    pastedDigits.forEach(digit => {
-      if (index < otpInputs.length) {
-        otpInputs[index].value = digit;
-        otpCode[index] = digit;
-        index++;
-      }
-    });
-  });
-
-  otpInputs[i].addEventListener('mouseup', function() {
-    if (!this.value) {
-      this.focus();
-    }
-  });
-
-  if (i === otpInputs.length - 1) {
-    otpInputs[i].addEventListener('input', function() {
-      if (this.value.length > 1) {
-        this.value = this.value.slice(0, 1);
-      }
-      otpCode[i] = this.value;
-    });
-
-    otpInputs[i].addEventListener('keydown', function(event) {
-      if (event.key === 'Backspace' && !this.value) {
-        otpCode[i] = '';
-        if (i > 0) {
-          otpInputs[i - 1].focus();
+    otpInputs.forEach((input, index) => {
+      // Handle input change event
+      input.addEventListener('input', (e) => {
+        const { value } = e.target;
+        if (value) {
+          // Move focus to the next input field
+          if (index < otpInputs.length - 1) {
+            otpInputs[index + 1].focus();
+          }
+        } else {
+          // Move focus to the previous input field
+          if (index > 0) {
+            otpInputs[index - 1].focus();
+          }
         }
-      }
-    });
-  }
-}
+      });
 
-document.querySelector('form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  const enteredOtp = otpCode.join('');
-  // do something with the OTP code here
-  console.log('OTP code entered:', enteredOtp);
-});
+      // Handle backspace key press event
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace') {
+          // Prevent browser from navigating back
+          e.preventDefault();
+          // Clear input value
+          input.value = '';
+          // Move focus to the previous input field
+          if (index > 0) {
+            otpInputs[index - 1].focus();
+          }
+        }
+      });
+
+      // Handle paste event
+      input.addEventListener('paste', (e) => {
+        // Prevent default paste behavior
+        e.preventDefault();
+        // Get pasted text
+        const pastedText = e.clipboardData.getData('text');
+        // Split pasted text into individual characters
+        const pastedDigits = pastedText.split('');
+        // Fill in the input fields with the pasted digits
+        pastedDigits.forEach((digit, i) => {
+          if (otpInputs[index + i]) {
+            otpInputs[index + i].value = digit;
+          }
+        });
+        // Move focus to the next input field
+        if (index < otpInputs.length - 1) {
+          otpInputs[index + pastedDigits.length].focus();
+        }
+      });
+    });
 
   </script>
 </body>
