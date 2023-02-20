@@ -28,7 +28,7 @@
     const MAX_LENGTH = 1;
 
     inputs.forEach((input, index) => {
-      input.addEventListener('input', (e) => {
+      input.addEventListener('keyup', (e) => {
         const value = e.data;
         if (value === null) {
           if (index > 0) {
@@ -39,16 +39,6 @@
           inputs[index + 1].focus();
         } else {
           input.value = input.value.substring(0, MAX_LENGTH);
-        }
-      });
-      input.addEventListener('keyup', function (event) {
-        const maxLength = parseInt(input.getAttribute('maxlength'));
-        const currentLength = input.value.length;
-
-        if (currentLength === maxLength) {
-          if (index < inputs.length - 1) {
-            inputs[index + 1].focus();
-          }
         }
       });
       input.addEventListener('paste', (e) => {
@@ -65,7 +55,7 @@
         }
       });
 
-      input.addEventListener('keyup', function (event) {
+      input.addEventListener('keydown', function (event) {
         const maxLength = parseInt(input.getAttribute('maxlength'));
         const currentLength = input.value.length;
 
