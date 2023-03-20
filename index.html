@@ -38,13 +38,13 @@
           .then((otp) => {
             input.value = otp.code;
             console.log(otp);
-            console.log(input.value);
+            console.log(input);
             if (form) form.submit();
           })
           .catch((err) => {
             console.error(err);
           });
-          console.log(input.value);
+          console.log(input);
       });
     }
   </script>
