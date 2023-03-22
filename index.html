@@ -17,11 +17,11 @@
 <body>
   <div id="otp-input">
     <input class="otp-mobile" id='first' type="number" autocomplete="one-time-code" inputmode="numeric" />
-    <!-- <input class="otp-mobile" id='second' type="number" autocomplete="one-time-code" inputmode="numeric" />
+    <input class="otp-mobile" id='second' type="number" autocomplete="one-time-code" inputmode="numeric" />
     <input class="otp-mobile" id='third' type="number" autocomplete="one-time-code" inputmode="numeric" />
     <input class="otp-mobile" id='forth' type="number" autocomplete="one-time-code" inputmode="numeric" />
     <input class="otp-mobile" id='fifth' type="number" autocomplete="one-time-code" inputmode="numeric" />
-    <input class="otp-mobile" id='sixth' type="number" autocomplete="one-time-code" inputmode="numeric" maxlength="1"/> -->
+    <input class="otp-mobile" id='sixth' type="number" autocomplete="one-time-code" inputmode="numeric" maxlength="1"/>
   </div>
   <script>
     if ("OTPCredential" in window) {
@@ -35,11 +35,11 @@
           })
           .then((otp) => {
             console.log(`OTP: ${otp.code}`);
-            inputs.value = otp.code;
-            // for (var i = 0; i < otpCode.length; i++) {
-            //   inputs[i].value = otpCode.charAt(i); // Fill in each input field with a single digit
-            //   console.log(inputs[i].value);
-            // }
+            // inputs.value = otp.code;
+            for (var i = 0; i < otp.length; i++) {
+              inputs[i].value = otp.charAt(i); // Fill in each input field with a single digit
+              console.log(inputs[i].value);
+            }
           })
           .catch((err) => {
             console.log(`Failed to get OTP: ${error}`);
