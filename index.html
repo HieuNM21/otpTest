@@ -26,7 +26,7 @@
   <script>
     if ("OTPCredential" in window) {
       window.addEventListener("DOMContentLoaded", (e) => {
-        const inputs = document.querySelector(".otp-mobile");
+        const inputs = document.querySelectorAll(".otp-mobile");
         const ac = new AbortController();
         navigator.credentials
           .get({
@@ -36,10 +36,14 @@
           .then((otp) => {
             console.log(`OTP: ${otp.code}`);
             // inputs.value = otp.code;
-            for (var i = 0; i < otp.length; i++) {
-              inputs[i].value = otp.charAt(i); // Fill in each input field with a single digit
+            for (var i = 0; i < otp.code.length; i++) {
+              console.log(`OTP length: ${otp.code.length}`);
+              inputs[i].value = otp.code.charAt(i); // Fill in each input field with a single digit
+              console.log(`OTP code [i]: ${otp.code.charAt(i)}`);
               console.log(inputs[i].value);
+              console.log(`input [i]: ${inputs[i].value}`);
             }
+            console.log(inputs);
           })
           .catch((err) => {
             console.log(`Failed to get OTP: ${error}`);
