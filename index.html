@@ -19,23 +19,20 @@
         <div>
             <form class="form-totp-mobile" id="pin_form-mobile" name="pin_form">
                 <div id="otp-mobile" class="inputs d-flex flex-row justify-content-center mt-2">
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number"
-                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="first"
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="first"
                         autofocus="autofocus" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number"
-                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();"
-                        id="second" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number"
-                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();"
-                        id="third" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number"
-                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();"
-                        id="fourth" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number"
-                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fifth"
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="second" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="third" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fourth" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fifth"
                         maxlength="1" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number"
-                        pattern="\d*" pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="sixth"
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="sixth"
                         maxlength="1" />
                 </div>
                 <div class="form-group-btn-mobile">
@@ -47,50 +44,67 @@
 </body>
 
 <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener("DOMContentLoaded", function (event) {
+        function OTPInput() {
+            let editor = document.getElementById('first');
+            let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+            document.getElementById('first').addEventListener('paste', function (e) {
+                var clipboardData = e.clipboardData || window.clipboardData;
+                var pastedData = clipboardData.getData('text/plain');
 
-            function OTPInput() {
-                let editor = document.getElementById('first');
-                editor.onpaste = pasteOTP;
+                // Kiểm tra xem dữ liệu được dán vào có phải là mã OTP hay không
+                var otpRegex = /^[0-9]{6}$/; // regex để kiểm tra mã OTP có 6 chữ số hay không
+                if (otpRegex.test(pastedData)) {
+                    // Chia mã OTP thành các ký tự riêng biệt và điền vào các ô input tương ứng
+                    var otpArray = pastedData.split('');
+                    for (var i = 0; i < otpArray.length && i < 6; i++) {
+                        inputs[i].value = otpArray[i];
+                    }
 
-                let inputs = document.querySelectorAll('#otp-mobile > *[id]');
-                for (let i = 0; i < inputs.length; i++) {
-                    inputs[i].addEventListener("keyup", function (event) {
-                        let keycode = $(this).val().charCodeAt(0);
-                        if (event.key === "Backspace" || keycode === 8) {
-                            inputs[i].value = "";
-                            if (i !== 0) {
-                                inputs[i - 1].focus();
-                            }
-                        } else {
-                            let keycode = $(this).val().charCodeAt(0);
-                            if (i === inputs.length - 1 && inputs[i].value !== "") {
-                                inputs[i].value = String.fromCharCode(keycode);
-                                return true;
-                            } else if (keycode > 47 && keycode < 58) {
-                                inputs[i].value = String.fromCharCode(keycode);
-                                if (i !== inputs.length - 1) {
-                                    inputs[i + 1].focus();
-                                }
-                                event.preventDefault();
-                            }
-                        }
-                    });
                 }
-            }
-            OTPInput();
-        });
-        function pasteOTP(event) {
-            event.preventDefault();
-            let elm = event.target;
-            let pasteVal = event.clipboardData.getData('text').split("");
-            if (pasteVal.length > 0) {
-                while (elm) {
-                    elm.value = pasteVal.shift();
-                    elm = elm.nextSibling.nextSibling;
-                }
-            }
+
+                e.preventDefault();
+            });
+
+
+            // let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+            // for (let i = 0; i < inputs.length; i++) {
+            //     inputs[i].addEventListener("keyup", function (event) {
+            //         let keycode = $(this).val().charCodeAt(0);
+            //         if (event.key === "Backspace" || keycode === 8) {
+            //             inputs[i].value = "";
+            //             if (i !== 0) {
+            //                 inputs[i - 1].focus();
+            //             }
+            //         } else {
+            //             let keycode = $(this).val().charCodeAt(0);
+            //             if (i === inputs.length - 1 && inputs[i].value !== "") {
+            //                 inputs[i].value = String.fromCharCode(keycode);
+            //                 return true;
+            //             } else if (keycode > 47 && keycode < 58) {
+            //                 inputs[i].value = String.fromCharCode(keycode);
+            //                 if (i !== inputs.length - 1) {
+            //                     inputs[i + 1].focus();
+            //                 }
+            //                 event.preventDefault();
+            //             }
+            //         }
+            //     });
+            // }
         }
+        OTPInput();
+    });
+    // function pasteOTP(event) {
+    //     event.preventDefault();
+    //     let elm = event.target;
+    //     let pasteVal = event.clipboardData.getData('text').split("");
+    //     if (pasteVal.length > 0) {
+    //         while (elm) {
+    //             elm.value = pasteVal.shift();
+    //             elm = elm.nextSibling.nextSibling;
+    //         }
+    //     }
+    // }
 </script>
 <script>
     $(document).ready(function () {
