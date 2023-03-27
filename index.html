@@ -47,7 +47,7 @@
     document.addEventListener("DOMContentLoaded", function (event) {
         function OTPInput() {
             let editor = document.getElementById('first');
-            let inputs = document.querySelectorAll('#otp-mobile > *[id]');
+            // let inputs = document.querySelectorAll('#otp-mobile > *[id]');
             document.getElementById('first').addEventListener('paste', function (e) {
                 var clipboardData = e.clipboardData || window.clipboardData;
                 var pastedData = clipboardData.getData('text/plain');
@@ -58,9 +58,8 @@
                     // Chia mã OTP thành các ký tự riêng biệt và điền vào các ô input tương ứng
                     var otpArray = pastedData.split('');
                     for (var i = 0; i < otpArray.length && i < 6; i++) {
-                        inputs[i].value = otpArray[i];
+                        document.getElementById(['first', 'second', 'third', 'fourth', 'fifth', 'sixth'][i]).value = otpArray[i];
                     }
-
                 }
 
                 e.preventDefault();
