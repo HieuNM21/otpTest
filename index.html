@@ -47,24 +47,38 @@
     document.addEventListener("DOMContentLoaded", function (event) {
         function OTPInput() {
             let editor = document.getElementById('first');
-            // let inputs = document.querySelectorAll('#otp-mobile > *[id]');
-            document.getElementById('first').addEventListener('paste', function (e) {
-                var clipboardData = e.clipboardData || window.clipboardData;
-                var pastedData = clipboardData.getData('text/plain');
+            const inputs = document.querySelectorAll('input[type="number"]');
 
-                // Kiểm tra xem dữ liệu được dán vào có phải là mã OTP hay không
-                var otpRegex = /^[0-9]{6}$/; // regex để kiểm tra mã OTP có 6 chữ số hay không
-                if (otpRegex.test(pastedData)) {
-                    // Chia mã OTP thành các ký tự riêng biệt và điền vào các ô input tương ứng
-                    var otpArray = pastedData.split('');
-                    for (var i = 0; i < otpArray.length && i < 6; i++) {
-                        document.getElementById(['first', 'second', 'third', 'fourth', 'fifth', 'sixth'][i]).value = otpArray[i];
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('input', function (e) {
+                    if (this.value.length >= this.maxLength) {
+                        if (i !== inputs.length - 1) {
+                            inputs[i + 1].focus();
+                        } else {
+                            this.blur();
+                        }
                     }
-                }
-
-                e.preventDefault();
-            });
-
+                });
+                inputs[i].addEventListener('keydown', function (e) {
+                    if (e.code === 'Backspace' && this.value === '') {
+                        if (i !== 0) {
+                            inputs[i - 1].focus();
+                        }
+                    }
+                });
+                inputs[i].addEventListener('paste', function (e) {
+                    e.preventDefault();
+                    const pastedText = e.clipboardData.getData('text/plain').trim();
+                    if (pastedText.length > 0) {
+                        for (let j = 0; j < pastedText.length; j++) {
+                            if (i + j < inputs.length) {
+                                inputs[i + j].value = pastedText.charAt(j);
+                                inputs[i + j].dispatchEvent(new InputEvent('input', { data: pastedText.charAt(j) }));
+                            }
+                        }
+                    }
+                });
+            }
 
             // let inputs = document.querySelectorAll('#otp-mobile > *[id]');
             // for (let i = 0; i < inputs.length; i++) {
