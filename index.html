@@ -17,145 +17,80 @@
 <body>
     <div class="content">
         <div>
-            <form class="form-totp-mobile" id="pin_form-mobile" name="pin_form">
-                <div id="otp-mobile" class="inputs d-flex flex-row justify-content-center mt-2">
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
-                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="first"
-                        autofocus="autofocus" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
-                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="second" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
-                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="third" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
-                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fourth" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
-                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fifth"
-                        maxlength="1" />
-                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
-                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="sixth"
-                        maxlength="1" />
-                </div>
-                <div class="form-group-btn-mobile">
-                    <input type="button" value="Xác thực" class="btnSubmit-mobile" id="btnSubmitOTP" />
-                </div>
+            <form class="otc" name="one-time-code" action="#">
+                <fieldset>
+                    <legend>Validation Code</legend>
+                    <label for="otc-1">Number 1</label>
+                    <label for="otc-2">Number 2</label>
+                    <label for="otc-3">Number 3</label>
+                    <label for="otc-4">Number 4</label>
+                    <label for="otc-5">Number 5</label>
+                    <label for="otc-6">Number 6</label>
+                    <div>
+                        <input type="number" pattern="[0-9]*" value="" inputmode="numeric" autocomplete="one-time-code"
+                            id="otc-1" required>
+                        <input type="number" pattern="[0-9]*" value="" inputmode="numeric" id="otc-2" required>
+                        <input type="number" pattern="[0-9]*" value="" inputmode="numeric" id="otc-3" required>
+                        <input type="number" pattern="[0-9]*" value="" inputmode="numeric" id="otc-4" required>
+                        <input type="number" pattern="[0-9]*" value="" inputmode="numeric" id="otc-5" required>
+                        <input type="number" pattern="[0-9]*" value="" inputmode="numeric" id="otc-6" required>
+                    </div>
+                </fieldset>
             </form>
+
         </div>
     </div>
 </body>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        function OTPInput() {
-            let editor = document.getElementById('first');
-            const inputs = document.querySelectorAll('input[type="number"]');
-
-            for (let i = 0; i < inputs.length; i++) {
-                inputs[i].addEventListener('input', function (e) {
-                    if (this.value.length >= this.maxLength) {
-                        if (i !== inputs.length - 1) {
-                            inputs[i + 1].focus();
-                        } else {
-                            this.blur();
-                        }
-                    }
-                });
-                inputs[i].addEventListener('keydown', function (e) {
-                    if (e.code === 'Backspace' && this.value === '') {
-                        if (i !== 0) {
-                            inputs[i - 1].focus();
-                        }
-                    }
-                });
-                inputs[i].addEventListener('paste', function (e) {
-                    e.preventDefault();
-                    const pastedText = e.clipboardData.getData('text/plain').trim();
-                    if (pastedText.length > 0) {
-                        for (let j = 0; j < pastedText.length; j++) {
-                            if (i + j < inputs.length) {
-                                inputs[i + j].value = pastedText.charAt(j);
-                                inputs[i + j].dispatchEvent(new InputEvent('input', { data: pastedText.charAt(j) }));
-                            }
-                        }
-                    }
-                });
+    let in1 = document.getElementById('otc-1')
+    let ins = document.querySelectorAll('input[type="number"]');
+    ins.forEach(function (input) {
+        /**	 * Control on keyup to catch what the user intent to do.	 * I could have check for numeric key only here, but I didn't.	 */
+        input.addEventListener('keyup', function (e) {
+            // Break if Shift, Tab, CMD, Option, Control.		
+            if (e.keyCode === 16 || e.keyCode == 9 || e.keyCode == 224 || e.keyCode == 18 || e.keyCode == 17) {
+                return;
             }
-
-            // let inputs = document.querySelectorAll('#otp-mobile > *[id]');
-            // for (let i = 0; i < inputs.length; i++) {
-            //     inputs[i].addEventListener("keyup", function (event) {
-            //         let keycode = $(this).val().charCodeAt(0);
-            //         if (event.key === "Backspace" || keycode === 8) {
-            //             inputs[i].value = "";
-            //             if (i !== 0) {
-            //                 inputs[i - 1].focus();
-            //             }
-            //         } else {
-            //             let keycode = $(this).val().charCodeAt(0);
-            //             if (i === inputs.length - 1 && inputs[i].value !== "") {
-            //                 inputs[i].value = String.fromCharCode(keycode);
-            //                 return true;
-            //             } else if (keycode > 47 && keycode < 58) {
-            //                 inputs[i].value = String.fromCharCode(keycode);
-            //                 if (i !== inputs.length - 1) {
-            //                     inputs[i + 1].focus();
-            //                 }
-            //                 event.preventDefault();
-            //             }
-            //         }
-            //     });
-            // }
+            // On Backspace or left arrow, go to the previous field.		
+            if ((e.keyCode === 8 || e.keyCode === 37) && this.previousElementSibling && this.previousElementSibling.tagName === "INPUT") {
+                this.previousElementSibling.select();
+            } else if (e.keyCode !== 8 && this.nextElementSibling) {
+                this.nextElementSibling.select();
+            }
+        });
+        /**	 
+        * Better control on Focus	 
+        *  - don't allow focus on other field if the first one is empty	
+        *  - don't allow focus on field if the previous one if empty (debatable) 
+        *  - get the focus on the first empty field	 */
+        input.addEventListener('focus', function (e) {
+            // If the focus element is the first one, do nothing		
+            if (this === in1) return;
+            // If value of input 1 is empty, focus it.		
+            if (in1.value == '') {
+                in1.focus();
+            }
+            // If value of a previous input is empty, focus it.		
+            // To remove if you don't wanna force user respecting the fields order.		
+            if (this.previousElementSibling.value == '') {
+                this.previousElementSibling.focus();
+            }
+        });
+    });/** * Handle copy/paste of a big number. * It catches the value pasted on the first field and spread it into the inputs. */
+    in1.addEventListener('input', function (e) {
+        let data = e.data || this.value;
+        // Chrome doesn't get the e.data, it's always empty, fallback to value then.	
+        if (!data) return;
+        // Shouldn't happen, just in case.	
+        if (data.length === 1) return;
+        // Here is a normal behavior, not a paste action.		
+        for (i = 0; i < data.length; i++) {
+            ins[i].value = data[i];
         }
-        OTPInput();
     });
-    // function pasteOTP(event) {
-    //     event.preventDefault();
-    //     let elm = event.target;
-    //     let pasteVal = event.clipboardData.getData('text').split("");
-    //     if (pasteVal.length > 0) {
-    //         while (elm) {
-    //             elm.value = pasteVal.shift();
-    //             elm = elm.nextSibling.nextSibling;
-    //         }
-    //     }
-    // }
-</script>
-<script>
-    $(document).ready(function () {
-        //disabled pc
-        $('#btnSubmitOTP').attr('disabled', 'disabled');
-
-        //disabled mobile
-        $('#btnSubmitOTP-mobile').attr('disabled', 'disabled');
-
-        $('#btnSubmitOTP-mobile').css('opacity', '0.6');
-    });
-    function inputOtpKeyUpMobile() {
-        const inputOTP1 = $('#first').val();
-        const inputOTP2 = $('#second').val();
-        const inputOTP3 = $('#third').val();
-        const inputOTP4 = $('#fourth').val();
-        const inputOTP5 = $('#fifth').val();
-        const inputOTP6 = $('#sixth').val();
-
-        //Convert int to string
-        const inputOTP1String = inputOTP1.toString();
-        const inputOTP2String = inputOTP2.toString();
-        const inputOTP3String = inputOTP3.toString();
-        const inputOTP4String = inputOTP4.toString();
-        const inputOTP5String = inputOTP5.toString();
-        const inputOTP6String = inputOTP6.toString();
-
-        console.log(inputOTP1String + inputOTP2String + inputOTP3String + inputOTP4String + inputOTP5String + inputOTP6String);
 
 
-        if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
-            $('#btnSubmitOTP-mobile').removeAttr('disabled');
-            $('#btnSubmitOTP-mobile').css('opacity', '1');
-        } else {
-            $('#btnSubmitOTP-mobile').attr('disabled', 'disabled');
-            $('#btnSubmitOTP-mobile').css('opacity', '0.6');
-        }
-    }
 </script>
 
 </html>
