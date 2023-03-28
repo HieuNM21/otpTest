@@ -17,20 +17,26 @@
 <body>
     <div class="content">
         <div>
-            <form class="otc" name="one-time-code" action="#">
-                <div>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" autocomplete="one-time-code" id="first"
-                        required>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" autocomplete="one-time-code" id="second"
-                        required>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" autocomplete="one-time-code" id="third"
-                        required>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" autocomplete="one-time-code" id="fourth"
-                        required>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" autocomplete="one-time-code" id="fifth"
-                        required>
-                    <input type="number" pattern="[0-9]*" inputmode="numeric" autocomplete="one-time-code" id="sixth"
-                        required maxlength="1">
+            <form class="form-totp-mobile" id="pin_form-mobile" name="pin_form">
+                <div id="otp-mobile" class="inputs d-flex flex-row justify-content-center mt-2">
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="first"
+                        autofocus="autofocus" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="second" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="third" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fourth" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="fifth"
+                        maxlength="1" />
+                    <input class="m-2 text-center form-control rounded input-otp-mobile" type="number" pattern="\d*"
+                        pattern="[0-9]*" inputmode="numeric" onkeyup="inputOtpKeyUpMobile();" id="sixth"
+                        maxlength="1" />
+                </div>
+                <div class="form-group-btn-mobile">
+                    <input type="button" value="Xác thực" class="btnSubmit-mobile" id="btnSubmitOTP" />
                 </div>
             </form>
         </div>
