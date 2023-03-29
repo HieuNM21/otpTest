@@ -11,7 +11,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css"
         integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-backup.css">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                         maxlength="1" />
                 </div>
                 <div class="form-group-btn-mobile">
-                    <input type="button" value="Xác thực" class="btnSubmit-mobile" id="btnSubmitOTP" />
+                    <input type="button" value="Xác thực" class="btnSubmit-mobile" id="btnSubmit-mobile" onclick="logValue();"/>
                 </div>
             </form>
         </div>
@@ -81,8 +81,51 @@
             inputs[i].value = data[i];
         }
     });
+</script>
+<script>
+    $(document).ready(function () {
+        //disabled pc
+        $('#btnSubmitOTP').attr('disabled', 'disabled');
 
+        //disabled mobile
+        // $('#btnSubmit-mobile').attr('disabled', 'disabled');
 
+        // $('#btnSubmit-mobile').css('opacity', '0.6');
+    });
+    function inputOtpKeyUpMobile() {
+        const inputOTP1 = $('#first').val();
+        const inputOTP2 = $('#second').val();
+        const inputOTP3 = $('#third').val();
+        const inputOTP4 = $('#fourth').val();
+        const inputOTP5 = $('#fifth').val();
+        const inputOTP6 = $('#sixth').val();
+
+        //Convert int to string
+        const inputOTP1String = inputOTP1.toString();
+        const inputOTP2String = inputOTP2.toString();
+        const inputOTP3String = inputOTP3.toString();
+        const inputOTP4String = inputOTP4.toString();
+        const inputOTP5String = inputOTP5.toString();
+        const inputOTP6String = inputOTP6.toString();
+
+        // if (inputOTP1String !== '' && inputOTP2String !== '' && inputOTP3String !== '' && inputOTP4String !== '' && inputOTP5String !== '' && inputOTP6String !== '') {
+        //     $('#btnSubmit-mobile').removeAttr('disabled');
+        //     $('#btnSubmit-mobile').css('opacity', '1');
+        // } else {
+        //     $('#btnSubmit-mobile').attr('disabled', 'disabled');
+        //     $('#btnSubmit-mobile').css('opacity', '0.6');
+        // }
+    }
+
+    function logValue() {
+        const inputOTP1 = $('#first').val();
+        const inputOTP2 = $('#second').val();
+        const inputOTP3 = $('#third').val();
+        const inputOTP4 = $('#fourth').val();
+        const inputOTP5 = $('#fifth').val();
+        const inputOTP6 = $('#sixth').val();
+        console.log(inputOTP1+inputOTP2+inputOTP3+inputOTP4+inputOTP5+inputOTP6);
+    }
 </script>
 
 </html>
