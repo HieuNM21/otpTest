@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-body{
-    font-family : 'Roboto' , sans-serif ;
+
+body {
+    font-family: 'Roboto', sans-serif;
     background: #fff !important;
 }
 
@@ -16,17 +17,18 @@ input[type=number]::-webkit-outer-spin-button {
     margin-right: 10px;
     width: 35px;
     height: 45px;
-    border-top:none;
-    border-left:none;
-    border-right:none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-bottom: 1px solid #ccc;
     background-color: #fff;
     outline: none;
-    font-family: Myriad,sans-serif;
+    font-family: Myriad, sans-serif;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+
 #loader {
     border: 7px solid #f3f3f3;
     /* Light grey */
@@ -44,30 +46,30 @@ input[type=number]::-webkit-outer-spin-button {
     100% { transform: rotate(360deg); }
   }
 
-
 /*Ipad ngang(1024 x 768)*/
-@media screen and (max-width: 1024px){
-    body{
+@media screen and (max-width: 1024px) {
+    body {
         background-image: none;
-        font-family : 'Roboto' , sans-serif ;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .product-title{
+    .product-title {
         display: none;
     }
 
-    .login-portal.layout{
+    .login-portal.layout {
         display: block;
     }
 
-    .container-content{
+    .container-content {
         display: none;
     }
 
-    .container-mobile{
+    .container-mobile {
         display: block;
     }
-    .container-mobile{
+
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -77,33 +79,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 32px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 24px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -111,28 +113,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 25px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -141,14 +143,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 250px 150px;
         width: 400px;
@@ -156,37 +158,38 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 18px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 17px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 48px;
     }
 }
 
 /*Ipad dọc(768 x 1024)*/
-@media screen and (max-width: 768px){
-    body{
-        font-family : 'Roboto' , sans-serif ;
+@media screen and (max-width: 768px) {
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -196,33 +199,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 32px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 24px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -230,28 +233,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 26px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -260,14 +263,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 70px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 250px 150px;
         width: 400px;
@@ -275,37 +278,38 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 18px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 17px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
-    .inputs input{
-        width:  48px;
+
+    .inputs input {
+        width: 48px;
     }
 }
 
 /*Tablet nhỏ(480 x 640),Pixel 2 */
-@media screen and (max-width: 480px){
-    body{
-        font-family : 'Roboto' , sans-serif ;
+@media screen and (max-width: 480px) {
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -315,33 +319,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 25px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 18px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -349,28 +353,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -379,14 +383,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -394,38 +398,39 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 36px;
         font-size: 17px;
     }
 }
 
 /* Pixel 2 XL */
-@media screen and (width: 411px) and (height: 823px){
-    body{
-        font-family : 'Roboto' , sans-serif ;
+@media screen and (width: 411px) and (height: 823px) {
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -435,33 +440,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 25px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 18px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -469,28 +474,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -499,14 +504,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -514,38 +519,39 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 36px;
         font-size: 25px;
     }
 }
 
 /*Iphone(480 x 640),Iphone 5/SE */
-@media screen and (max-width: 320px){
-    body{
-        font-family : 'Roboto' , sans-serif ;
+@media screen and (max-width: 320px) {
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -555,33 +561,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 20px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 15px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -589,28 +595,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 24px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -619,14 +625,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 50px;
         border-radius: 35px;
         margin-top: 50px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 172px 100px;
         width: 272px;
@@ -634,24 +640,24 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 13px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 12px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
     .inputs input {
@@ -660,12 +666,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /* Iphone 5/SE */
-@media screen and (width: 320px) and (height: 568px){
-    body{
-        font-family : 'Roboto' , sans-serif ;
+@media screen and (width: 320px) and (height: 568px) {
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -675,33 +681,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 20px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 15px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -709,27 +715,27 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -738,14 +744,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 50px;
         border-radius: 35px;
         margin-top: 50px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 172px 100px;
         width: 272px;
@@ -753,24 +759,24 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 12px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 12px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
     .inputs input {
@@ -782,12 +788,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 /*Smart phone nhỏ*/
-@media screen and (max-width: 240px){
-    body{
-        font-family : 'Roboto' , sans-serif ;
+@media screen and (max-width: 240px) {
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -797,33 +803,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 22px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 14px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -831,28 +837,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 24px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -861,14 +867,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 60px;
         border-radius: 35px;
         margin-top: 60px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 183px 99px;
         width: 282px;
@@ -876,24 +882,24 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 15px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 13px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     .inputs input {
@@ -903,11 +909,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Moto G4,Galaxy S5 */
 @media screen and (width: 360px) and (height: 640px) {
-    body{
-        font-family : 'Roboto' , sans-serif ;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -917,33 +923,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 25px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 16px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -951,28 +957,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -981,48 +987,48 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
         margin-top: 15px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 }
 
 /* Iphone 6/7/8 */
 @media screen and (width: 375px) and (height: 667px) {
-    body{
-        font-family : 'Roboto' , sans-serif ;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1032,33 +1038,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 18px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1066,28 +1072,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1096,14 +1102,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -1111,26 +1117,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 42px;
         font-size: 17px;
     }
@@ -1138,11 +1145,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Iphone 6/7/8 Plus */
 @media screen and (width: 414px) and (height: 736px) {
-    body{
-        font-family : 'Roboto' , sans-serif ;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1152,33 +1159,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 18px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1186,28 +1193,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1216,14 +1223,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -1231,27 +1238,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .inputs input{
+    .inputs input {
         width: 42px;
         font-size: 17px;
     }
@@ -1259,11 +1266,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Iphone X */
 @media screen and (width: 375px) and (height: 812px) {
-    body{
-        font-family : 'Roboto' , sans-serif ;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1273,33 +1280,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 16px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1307,28 +1314,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1337,14 +1344,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -1352,27 +1359,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 13px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .inputs input{
+    .inputs input {
         appearance: none;
         -webkit-appearance: none;
         width: 42px;
@@ -1382,11 +1389,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Ipad Pro doc */
 @media screen and (width: 1024px) and (height: 1366px) {
-    body{
-        font-family : 'Roboto' , sans-serif ;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1396,33 +1403,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 40px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 30px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1430,28 +1437,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 26px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 120px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1460,14 +1467,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 75px;
         border-radius: 35px;
         margin-top: 100px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 300px 200px;
         width: 500px;
@@ -1475,27 +1482,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 24px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 21px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .inputs input{
+    .inputs input {
         width: 60px;
         font-size: 24px;
     }
@@ -1503,28 +1510,28 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Ipad Pro ngang */
 @media screen and (width: 1366px) and (height: 1024px) {
-    body{
+    body {
         background-image: none;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .product-title{
+    .product-title {
         display: none;
     }
 
-    .login-portal.layout{
+    .login-portal.layout {
         display: block;
     }
 
-    .container-content{
+    .container-content {
         display: none;
     }
 
-    .container-mobile{
+    .container-mobile {
         display: block;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1534,33 +1541,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 36px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 28px;
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1568,28 +1575,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1598,14 +1605,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 70px;
         border-radius: 35px;
         margin-top: 100px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 300px 200px;
         width: 500px;
@@ -1613,26 +1620,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 24px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 21px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-       font-family:-apple-system,'Roboto',sans-serif;
+        font-family: -apple-system, 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 60px;
         font-size: 24px;
     }
@@ -1640,11 +1648,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Surface Duo doc */
 @media screen and (width: 540px) and (height: 720px) {
-    body{
-        font-family: 'Roboto',sans-serif;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1654,33 +1662,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 20px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1688,28 +1696,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1718,14 +1726,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -1733,26 +1741,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 15px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 35px;
         font-size: 25px;
     }
@@ -1760,11 +1769,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Surface Duo ngang */
 @media screen and (width: 720px) and (height: 540px) {
-    body{
-        font-family: 'Roboto',sans-serif;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1774,33 +1783,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 20px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1808,28 +1817,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1838,14 +1847,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -1853,26 +1862,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 15px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 36px;
         font-size: 25px;
     }
@@ -1880,11 +1890,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Galaxy Fold doc */
 @media screen and (width: 280px) and (height: 653px) {
-    body{
-        font-family: 'Roboto',sans-serif;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -1894,33 +1904,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 26px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 14px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -1928,28 +1938,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 24px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -1958,14 +1968,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 50px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 180px 100px;
         width: 280px;
@@ -1973,24 +1983,24 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 14px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 12px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     .inputs input {
@@ -2000,11 +2010,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /*Galaxy Fold ngang  */
 @media screen and (width: 653px) and (height: 280px) {
-    body{
-        font-family: 'Roboto',sans-serif;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -2014,33 +2024,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 20px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -2048,28 +2058,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -2078,41 +2088,42 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 30px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
         margin-top: 15px;
-        font-size:16px;
+        font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
-        font-size:14px;
+        font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 36px;
         font-size: 25px;
     }
@@ -2120,11 +2131,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Galaxy Fold 2 màn dọc */
 @media screen and (width: 512px) and (height: 717px) {
-    body{
-        font-family: 'Roboto',sans-serif;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -2134,33 +2145,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 20px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -2168,28 +2179,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 80px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -2198,14 +2209,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -2213,26 +2224,27 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
-        font-family: 'Roboto' , sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 36px;
         font-size: 25px;
     }
@@ -2240,11 +2252,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Galaxy Fold 2 màn ngang */
 @media screen and (width: 717px) and (height: 512px) {
-    body{
-        font-family: 'Roboto',sans-serif;
+    body {
+        font-family: 'Roboto', sans-serif;
     }
 
-    .container-mobile{
+    .container-mobile {
         flex-shrink: 0;
         margin: auto;
         display: flex;
@@ -2254,33 +2266,33 @@ input[type=number]::-webkit-outer-spin-button {
         flex-direction: column;
     }
 
-    .logo-mobile{
+    .logo-mobile {
         display: flex;
         justify-content: center;
     }
 
-    .img-left-mobile{
+    .img-left-mobile {
         height: 100px;
         width: 100px;
         border-radius: 50%;
     }
 
-    .title-smsotp-mobile{
+    .title-smsotp-mobile {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         font-weight: 500;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .desc-otp-mobile{
+    .desc-otp-mobile {
         text-align: center;
         margin: 0;
         font-size: 20px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .numberphone-smsotp-mobile{
+    .numberphone-smsotp-mobile {
         font-weight: bold;
         text-align: center;
         margin-top: 5px;
@@ -2288,28 +2300,28 @@ input[type=number]::-webkit-outer-spin-button {
         letter-spacing: 2px;
     }
 
-    #otp-mobile{
+    #otp-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #otp-mobile{
-        display:block;
+    #otp-mobile {
+        display: block;
     }
 
-    .input-otp-mobile{
+    .input-otp-mobile {
         font-size: 30px;
         text-align: center;
     }
 
-    .form-totp-mobile{
+    .form-totp-mobile {
         margin-top: 60px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .btnSubmit-mobile{
+    .btnSubmit-mobile {
         border: none;
         background-color: rgb(4, 129, 231);
         color: #fff;
@@ -2318,14 +2330,14 @@ input[type=number]::-webkit-outer-spin-button {
         height: 55px;
         border-radius: 35px;
         margin-top: 65px;
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
-    #sixth{
+    #sixth {
         margin-right: 0px;
     }
 
-    .container-timedown-resendcode-mobile{
+    .container-timedown-resendcode-mobile {
         display: grid;
         grid-template-columns: 200px 120px;
         width: 320px;
@@ -2333,25 +2345,26 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
     }
 
-    .container-timedown-mobile{
+    .container-timedown-mobile {
         text-align: left;
         font-size: 14px;
     }
 
-    .container-resendcode-mobile{
+    .container-resendcode-mobile {
         text-align: right;
     }
 
-    .link-resend-code-mobile{
+    .link-resend-code-mobile {
         text-decoration: none;
         color: rgb(32, 107, 248);
     }
 
-    .desc-timedown-mobile{
+    .desc-timedown-mobile {
         color: rgba(202, 33, 33, 0.87);
-        font-family: 'Roboto',sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
-    .inputs input{
+
+    .inputs input {
         width: 36px;
         font-size: 25px;
     }
